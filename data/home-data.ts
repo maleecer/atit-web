@@ -61,10 +61,10 @@ export const eventsData = [
       "Cultural events and entertainment",
     ],
     gallery: [
-      "/assets/atit-week-banner.png",
-      "/assets/atit-extru-team.jpg",
-      "/assets/atit-workshop-1.jpg",
-      "/assets/atit-workshop-2.jpg",
+      "/assets/carousel-1.jpg",
+      "/assets/carousel-5.jpg",
+      "/assets/carousel-3.jpg",
+      "/assets/carousel-4.jpg",
     ],
   },
   {
@@ -171,10 +171,10 @@ export const whoWeAreData = {
   missionLabel: "mission",
   missionStatement: "Build compassionate technologies that move the Rajarata community forward.",
   carouselImages: [
-    "/assets/atit-extru-team.jpg",
-    "/assets/atit-workshop-1.jpg",
-    "/assets/atit-workshop-2.jpg",
-    "/assets/atit-workshop-3.jpg",
+      "/assets/carousel-1.jpg",
+      "/assets/carousel-2.jpg",
+      "/assets/carousel-3.jpg",
+      "/assets/carousel-4.jpg",
   ],
   stats: [
     { label: "Active Members", value: "300+" },

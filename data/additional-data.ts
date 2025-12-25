@@ -89,10 +89,10 @@ export const blogPosts = [
 ]
 
 export const galleryData = [
-  { id: 1, image: "/placeholder.svg?key=g1", alt: "Hackathon Event" },
-  { id: 2, image: "/placeholder.svg?key=g2", alt: "Team Meeting" },
-  { id: 3, image: "/placeholder.svg?key=g3", alt: "Workshop Session" },
-  { id: 4, image: "/placeholder.svg?key=g4", alt: "Project Presentation" },
-  { id: 5, image: "/placeholder.svg?key=g5", alt: "Team Building" },
-  { id: 6, image: "/placeholder.svg?key=g6", alt: "Award Ceremony" },
+  { id: 1, image: "/assets/gallery-3.jpg", alt: "Hackathon Event" },
+  { id: 2, image: "/assets/gallery-5.jpg", alt: "Team Meeting" },
+  { id: 3, image: "/assets/gallery-2.jpg", alt: "Workshop Session" },
+  { id: 4, image: "/assets/gallery-6.jpg", alt: "Project Presentation" },
+  { id: 5, image: "/assets/gallery-1.jpg", alt: "Team Building" },
+  { id: 6, image: "/assets/gallery-4.jpg", alt: "Award Ceremony" },
 ]
