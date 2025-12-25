@@ -161,7 +161,7 @@ export default function ContactPage() {
               >
                 {info.href ? (
                   <a href={info.href} target="_blank" rel="noopener noreferrer" className="block">
-                    <div className="bg-card border border-border rounded-xl p-6 h-full hover:border-foreground/20 transition-all group-hover:-translate-y-1">
+                    <div className="bg-card  border border-border rounded-xl p-6 h-50 hover:border-foreground/20 transition-all group-hover:-translate-y-1">
                       <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center mb-4 text-muted-foreground group-hover:bg-foreground group-hover:text-background transition-colors">
                         {info.icon}
                       </div>
@@ -239,7 +239,7 @@ export default function ContactPage() {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:border-transparent transition-all"
+                          className="w-full 9px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground focus:border-transparent transition-all"
                           placeholder="your@email.com"
                         />
                       </div>
