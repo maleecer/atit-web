@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { Footer } from "@/components/footer"
+import { PageLoader } from "@/components/page-loader"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 import { GlobalStructuredData } from "@/components/structured-data"
@@ -151,6 +152,7 @@ export default function RootLayout({
         <GlobalStructuredData />
       </head>
       <body>
+        <PageLoader />
         <SmoothScrollProvider>
           {children}
           <Footer />
