@@ -61,7 +61,7 @@ export function WhoWeAreSection({ data }: WhoWeAreSectionProps) {
     if (!data) return null
 
     return (
-        <section ref={containerRef} className="relative overflow-hidden py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <section id="who-we-are" ref={containerRef} className="relative overflow-hidden py-24 px-4 sm:px-6 lg:px-8 bg-black">
             <div className="absolute inset-0 bg-linear-to-b from-white/5 via-transparent to-black pointer-events-none" />
 
             {/* Parallax Background Elements */}
@@ -90,7 +90,7 @@ export function WhoWeAreSection({ data }: WhoWeAreSectionProps) {
                     <div>
                         <p className="text-sm font-semibold text-primary/80">{data.faculty}</p>
                         <h2 className="text-4xl sm:text-5xl font-bold text-white mt-2 mb-3">{data.title}</h2>
-                        
+
                     </div>
 
                     <p className="text-base sm:text-lg text-gray-300 leading-relaxed">

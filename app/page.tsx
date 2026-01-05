@@ -2,9 +2,9 @@ import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
 import { EventsPreview } from "@/components/events-preview"
 import { ProjectsPreview } from "@/components/projects-preview"
-import { TeamSection } from "@/components/team-section"
+import { ContactSummary } from "@/components/contact-summary"
 import { WhoWeAreSection } from "@/components/who-we-are"
-import { heroData, featuresData, eventsData, projectsData, teamData, navData, whoWeAreData } from "@/data/home-data"
+import { heroData, featuresData, eventsData, projectsData, teamData, whoWeAreData, navData } from "@/data"
 
 export default function Home() {
   return (
@@ -12,9 +12,9 @@ export default function Home() {
       <Navigation logo={navData.logo} />
       <HeroSection title={heroData.title} subtitle={heroData.subtitle} cta={heroData.cta} logo={heroData.logo} />
       <WhoWeAreSection data={whoWeAreData} />
-      <EventsPreview events={eventsData} />
+      <EventsPreview events={eventsData.slice(0, 3)} />
       <ProjectsPreview projects={projectsData} />
-      <TeamSection members={teamData} />
+      <ContactSummary />
     </main>
   )
 }

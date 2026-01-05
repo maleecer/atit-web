@@ -4,7 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { PageBackground } from "@/components/page-background"
-import { projectsData } from "@/data/home-data"
+import { projectsData } from "@/data"
 import { ProjectDetailModal, type ProjectDetail } from "@/components/project-detail-modal"
 
 export default function ProjectsPage() {
@@ -40,57 +40,8 @@ export default function ProjectsPage() {
     setSelectedProject(null)
   }
 
-  // Extended project data with more details
-  const extendedProjects: ProjectDetail[] = projectsData.map((project) => ({
-    ...project,
-    fullDescription:
-      project.id === 1
-        ? "The Smart Campus IoT System is a comprehensive solution designed to monitor and optimize campus resources in real-time. Using a network of Arduino-based sensors, the system collects data on energy consumption, occupancy levels, environmental conditions, and more. The data is processed and visualized through an intuitive dashboard, enabling facility managers to make data-driven decisions."
-        : project.id === 2
-          ? "Our AI Chatbot Platform leverages natural language processing to provide students with instant assistance for academic queries. Built with Python and modern NLP libraries, the chatbot can answer questions about course materials, deadlines, campus services, and general academic information. It learns from interactions to continuously improve its responses."
-          : "The Mobile Learning App is a cross-platform educational application built with React Native. It features interactive learning modules, progress tracking, quizzes, and collaborative study tools. The app syncs seamlessly across devices and includes offline mode for learning on the go.",
-    features:
-      project.id === 1
-        ? [
-            "Real-time sensor data collection and monitoring",
-            "Interactive dashboard with analytics",
-            "Automated alerts and notifications",
-            "Energy consumption optimization",
-            "Historical data analysis and reporting",
-          ]
-        : project.id === 2
-          ? [
-              "Natural language understanding",
-              "Context-aware responses",
-              "Multi-language support",
-              "Integration with university systems",
-              "Continuous learning from interactions",
-            ]
-          : [
-              "Cross-platform compatibility",
-              "Offline mode support",
-              "Interactive quizzes and assessments",
-              "Progress tracking and analytics",
-              "Collaborative study features",
-            ],
-    technologies:
-      project.id === 1
-        ? ["Arduino", "Node.js", "MongoDB", "React", "MQTT", "InfluxDB"]
-        : project.id === 2
-          ? ["Python", "TensorFlow", "FastAPI", "PostgreSQL", "Docker", "Redis"]
-          : ["React Native", "Firebase", "TypeScript", "Redux", "Expo"],
-    team:
-      project.id === 1
-        ? ["Ashan Wijesinghe", "Kavinda Perera", "Dilini Jayawardena"]
-        : project.id === 2
-          ? ["Lakshmi Fernando", "Nuwan Bandara", "Sachini Rathnayake"]
-          : ["Chamara Silva", "Iresha Kumari", "Tharindu Lakshan"],
-    gallery: [project.image],
-    links: {
-      demo: "#",
-      github: "#",
-    },
-  }))
+  // Use project data directly from home-data.ts (now includes all extended details)
+  const projects: ProjectDetail[] = projectsData as ProjectDetail[]
 
   return (
     <main className="min-h-screen bg-background relative">
@@ -134,7 +85,7 @@ export default function ProjectsPage() {
             initial="hidden"
             animate="visible"
           >
-            {extendedProjects.map((project) => (
+            {projects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
@@ -190,7 +141,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -211,7 +162,7 @@ export default function ProjectsPage() {
             </motion.button>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       <ProjectDetailModal project={selectedProject} isOpen={isModalOpen} onClose={handleCloseModal} />
     </main>

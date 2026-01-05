@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { navData } from "@/data/home-data"
+import { navData } from "@/data"
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -38,7 +38,7 @@ export function Navigation({ logo }: NavigationProps) {
                 <img src={logoSrc || "/placeholder.svg"} alt="ATIT logo" className="w-full h-full object-contain" />
               </motion.div>
               <span className="font-bold text-lg tracking-tight text-foreground group-hover:text-muted-foreground transition-colors">
-                ATIT
+                ATiT
               </span>
             </Link>
 
@@ -60,19 +60,6 @@ export function Navigation({ logo }: NavigationProps) {
                 </Link>
               ))}
             </div>
-
-            {/* CTA Button */}
-            <motion.div className="hidden md:block">
-              <Link href="/join">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-5 py-2 rounded-full bg-foreground text-background font-semibold text-sm hover:bg-foreground/90 transition-colors"
-                >
-                  Join Us
-                </motion.button>
-              </Link>
-            </motion.div>
 
             {/* Mobile Menu Button */}
             <button
@@ -126,18 +113,6 @@ export function Navigation({ logo }: NavigationProps) {
                   </Link>
                 </motion.div>
               ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navItems.length * 0.05 }}
-                className="pt-2"
-              >
-                <Link href="/join" onClick={() => setIsOpen(false)}>
-                  <button className="w-full px-4 py-3 rounded-lg bg-foreground text-background font-semibold text-sm">
-                    Join Us
-                  </button>
-                </Link>
-              </motion.div>
             </div>
           </motion.div>
         )}

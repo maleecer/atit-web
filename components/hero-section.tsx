@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { CanvasParticles } from "./canvas-particles";
+import { scrollToSection } from "./smooth-scroll-provider";
 import { useEffect, useState } from "react";
 
 interface HeroProps {
@@ -29,7 +30,7 @@ export function HeroSection({ title, subtitle, cta, logo }: HeroProps) {
     setNodes(generatedNodes);
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -40,20 +41,17 @@ export function HeroSection({ title, subtitle, cta, logo }: HeroProps) {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as any,
     },
   };
 
   const handleScroll = () => {
-    const target = document.getElementById("features");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection("#who-we-are");
   };
 
   return (
@@ -98,6 +96,7 @@ export function HeroSection({ title, subtitle, cta, logo }: HeroProps) {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <motion.button
+            onClick={handleScroll}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 rounded-lg bg-white text-black font-semibold text-base hover:shadow-xl hover:shadow-white/40 transition-shadow"
@@ -119,7 +118,7 @@ export function HeroSection({ title, subtitle, cta, logo }: HeroProps) {
             Scroll Down
           </span>
 
-          
+
           <motion.span
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50"
             animate={{ y: [0, 6, 0] }}

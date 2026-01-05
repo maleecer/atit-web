@@ -1,0 +1,27 @@
+{
+  "name": "ATIT Rajarata - Student Innovation Club",
+  "short_name": "ATIT",
+  "description": "ATIT is the premier student-led technology innovation club at Rajarata University of Sri Lanka.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["education", "technology", "community"],
+  "icons": [
+    {
+      "src": "/assets/atit-logo-rounded.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/atit-logo-rounded.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

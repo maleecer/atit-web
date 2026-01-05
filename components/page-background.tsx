@@ -5,9 +5,17 @@ import { motion } from "framer-motion"
 export function PageBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      {/* Top glimpse gradient */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[500px] opacity-[0.03] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at top, rgba(255,255,255,0.8) 0%, transparent 70%)",
+        }}
+      />
+
       {/* Grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.015]"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -66,9 +74,9 @@ export function PageBackground() {
 
       {/* Diagonal lines */}
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.015]">
-        <div className="absolute top-20 left-0 w-[200%] h-px bg-white rotate-[15deg] origin-left" />
-        <div className="absolute top-1/3 left-0 w-[200%] h-px bg-white rotate-[-10deg] origin-left" />
-        <div className="absolute top-2/3 left-0 w-[200%] h-px bg-white rotate-[8deg] origin-left" />
+        <div className="absolute top-20 left-0 w-[200%] h-px bg-white rotate-12 origin-left" />
+        <div className="absolute top-1/3 left-0 w-[200%] h-px bg-white -rotate-12 origin-left" />
+        <div className="absolute top-2/3 left-0 w-[200%] h-px bg-white rotate-6 origin-left" />
       </div>
 
       {/* Corner accents */}

@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 interface Project {
   id: number
@@ -75,11 +76,11 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover bg-white"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-t from-background/80 via-background/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-80" />
               </div>
 
               {/* Project details */}
@@ -112,13 +113,15 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
           transition={{ delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/10 transition-colors"
-          >
-            Explore All Projects
-          </motion.button>
+          <Link href="/projects">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/10 transition-colors"
+            >
+              Explore All Projects
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

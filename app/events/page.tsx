@@ -1,18 +1,31 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { motion } from "framer-motion"
+import { useSearchParams } from "next/navigation"
 import { Navigation } from "@/components/navigation"
 import { PageBackground } from "@/components/page-background"
-import { eventsData } from "@/data/home-data"
+import { eventsData } from "@/data"
 import { EventDetailModal, type EventDetail } from "@/components/event-detail-modal"
 
 type EventCategory = "All" | "Workshop" | "Competition" | "Seminar" | "Event" | "Exhibition"
 
-export default function EventsPage() {
+function EventsContent() {
+  const searchParams = useSearchParams()
   const [selectedCategory, setSelectedCategory] = useState<EventCategory>("All")
   const [selectedEvent, setSelectedEvent] = useState<EventDetail | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    const eventId = searchParams.get("id")
+    if (eventId) {
+      const event = eventsData.find((e) => e.id === Number(eventId))
+      if (event) {
+        setSelectedEvent(event as EventDetail)
+        setIsModalOpen(true)
+      }
+    }
+  }, [searchParams])
 
   const categories: EventCategory[] = ["All", "Event", "Exhibition", "Workshop", "Competition", "Seminar"]
 
@@ -49,10 +62,7 @@ export default function EventsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background relative">
-      <PageBackground />
-      <Navigation />
-
+    <>
       {/* Hero section */}
       <section className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -91,11 +101,10 @@ export default function EventsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all ${
-                  selectedCategory === category
-                    ? "bg-foreground text-background"
-                    : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30"
-                }`}
+                className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all ${selectedCategory === category
+                  ? "bg-foreground text-background"
+                  : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30"
+                  }`}
               >
                 {category}
               </motion.button>
@@ -122,7 +131,7 @@ export default function EventsPage() {
                   onClick={() => handleEventClick(event as EventDetail)}
                   className="rounded-2xl overflow-hidden bg-card border border-border hover:border-foreground/20 transition-all group cursor-pointer h-full flex flex-col"
                 >
-                  <div className="relative h-56 overflow-hidden bg-muted">
+                  <div className="relative h-56 overflow-hidden bg-white">
                     <motion.img
                       src={event.image}
                       alt={event.title}
@@ -165,6 +174,18 @@ export default function EventsPage() {
 
       {/* Event detail modal */}
       <EventDetailModal event={selectedEvent} isOpen={isModalOpen} onClose={handleCloseModal} />
+    </>
+  )
+}
+
+export default function EventsPage() {
+  return (
+    <main className="min-h-screen bg-background relative">
+      <PageBackground />
+      <Navigation />
+      <Suspense fallback={<div className="pt-32 text-center text-muted-foreground">Loading events...</div>}>
+        <EventsContent />
+      </Suspense>
     </main>
   )
 }
