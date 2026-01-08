@@ -69,14 +69,14 @@ export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
               key={project.id}
               variants={itemVariants}
               whileHover={{ y: -8 }}
-              className="rounded-xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-all group"
+              className="rounded-xl overflow-hidden bg-card border border-border/50 hover:border-primary/50 transition-colors group"
             >
               {/* Project image */}
-              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+              <div className="relative h-48 overflow-hidden bg-muted">
                 <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover bg-white"
+                  className="w-full h-full object-cover"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 />

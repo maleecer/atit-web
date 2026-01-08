@@ -114,6 +114,7 @@ export function CanvasParticles() {
 
       window.addEventListener("resize", onResize)
       animate()
+      window.dispatchEvent(new CustomEvent("3d-content-ready"))
 
       return () => {
         window.removeEventListener("resize", onResize)

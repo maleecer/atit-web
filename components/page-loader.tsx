@@ -19,14 +19,22 @@ export function PageLoader() {
             })
         }, 100)
 
-        // Hide loader after animation completes
-        const timer = setTimeout(() => {
+        // Hide loader when 3D content is ready
+        const handleReady = () => {
             setIsLoading(false)
-        }, 2000)
+        }
+
+        window.addEventListener("3d-content-ready", handleReady)
+
+        // Safety timeout in case the event never fires
+        const safetyTimer = setTimeout(() => {
+            setIsLoading(false)
+        }, 5000)
 
         return () => {
             clearInterval(interval)
-            clearTimeout(timer)
+            window.removeEventListener("3d-content-ready", handleReady)
+            clearTimeout(safetyTimer)
         }
     }, [])
 

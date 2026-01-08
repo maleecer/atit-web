@@ -97,20 +97,20 @@ export function WhoWeAreSection({ data }: WhoWeAreSectionProps) {
                         {data.description}
                     </p>
 
-                    <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {data.highlights.map((item) => (
                             <div key={item} className="flex items-start gap-3">
-                                <span className="mt-1 h-2 w-2 rounded-full bg-secondary" />
+                                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-secondary" />
                                 <p className="text-sm text-gray-300">{item}</p>
                             </div>
                         ))}
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-white/10">
                         {data.stats.map((stat) => (
                             <div key={stat.label} className="text-center">
-                                <p className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</p>
-                                <p className="text-xs uppercase tracking-widest text-gray-400">{stat.label}</p>
+                                <p className="text-xl sm:text-3xl font-bold text-white">{stat.value}</p>
+                                <p className="text-[10px] sm:text-xs uppercase tracking-widest text-gray-400">{stat.label}</p>
                             </div>
                         ))}
                     </div>
@@ -142,22 +142,27 @@ export function WhoWeAreSection({ data }: WhoWeAreSectionProps) {
                     viewport={{ once: true }}
                     className="relative"
                 >
-                    <div className="relative h-[500px] w-full flex items-center justify-center">
+                    <div className="relative h-[350px] sm:h-[500px] w-full flex items-center justify-center">
                         <Carousel
                             items={carouselItems}
-                            baseWidth={500}
-                            height={350}
+                            baseWidth={450}
+                            height={300}
                             autoplay={true}
                             autoplayDelay={4000}
                             loop={true}
                             pauseOnHover={true}
                         />
 
-                        {/* Overlays - Positioned relative to the container now */}
-                        <div className="absolute top-0 right-0 px-4 py-3 rounded-2xl backdrop-blur-xl bg-black/40 border border-white/10 text-right pointer-events-none z-10">
+                        {/* Department overlay - hidden on mobile, shown on larger screens */}
+                        <div className="hidden sm:block absolute top-0 right-0 px-4 py-3 rounded-2xl backdrop-blur-xl bg-black/40 border border-white/10 text-right pointer-events-none z-10">
                             <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Department</p>
                             <p className="text-base font-semibold text-white">{data.department}</p>
                         </div>
+                    </div>
+                    {/* Department info for mobile - shown below carousel on small screens */}
+                    <div className="sm:hidden text-center mt-4 px-4 py-3 rounded-2xl backdrop-blur-xl bg-black/40 border border-white/10">
+                        <p className="text-xs uppercase tracking-[0.4em] text-gray-400">Department</p>
+                        <p className="text-sm font-semibold text-white">{data.department}</p>
                     </div>
 
                     <motion.div

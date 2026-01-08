@@ -14,7 +14,7 @@ export const siteConfig = {
   shortName: "ATIT",
   fullName: "Association of Technology IT - Rajarata University",
   description:
-    "ATIT is the premier student-led technology innovation club at Rajarata University of Sri Lanka. Join us to explore cutting-edge technology, participate in workshops, hackathons, and build innovative projects.",
+    "ATIT is the student-led technology innovation club at Faculty of Technology, Rajarata University of Sri Lanka. Join us to explore cutting-edge technology, participate in workshops, hackathons, and build innovative projects.",
   tagline: "Innovate. Create. Transform.",
   keywords: [
     "ATIT",
@@ -43,7 +43,6 @@ export const siteConfig = {
 
   // Contact information
   email: "atit@tec.rjt.ac.lk",
-  phone: "+94771234567", // Update with actual phone if available
 
   // Address
   address: {
@@ -73,7 +72,6 @@ export const socialLinks = {
   linkedin: "https://linkedin.com/company/atit-rajarata",
   whatsapp: "https://wa.me/94771234567",
   discord: "https://discord.gg/atit",
-  github: "https://github.com/atit-rajarata", // Add if exists
 }
 
 // ============================================================
@@ -81,9 +79,9 @@ export const socialLinks = {
 // ============================================================
 export const pageMetadata = {
   home: {
-    title: "ATIT Rajarata - Student Innovation Club | Rajarata University",
+    title: "ATIT Rajarata - Faculty of Technology | RUSL",
     description:
-      "Join ATIT, the premier student-led technology innovation club at Rajarata University. Explore workshops, hackathons, projects, and connect with tech enthusiasts.",
+      "Association of Technology IT - Rajarata University. Explore workshops, hackathons, projects, and connect with tech enthusiasts.",
   },
   about: {
     title: "About Us",

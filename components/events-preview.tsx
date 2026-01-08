@@ -70,7 +70,7 @@ export function EventsPreview({ events }: EventsPreviewProps) {
               key={event.id}
               variants={itemVariants}
               whileHover={{ y: -8 }}
-              className="rounded-xl overflow-hidden bg-card border border-border/50 hover:border-secondary/50 transition-all group cursor-pointer"
+              className="rounded-xl overflow-hidden bg-card border border-border/50 hover:border-secondary/50 transition-colors group cursor-pointer"
             >
               {/* Event image */}
               <div className="relative h-48 overflow-hidden bg-white">

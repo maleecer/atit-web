@@ -77,7 +77,7 @@ export const eventsData: Event[] = [
   {
     id: 3,
     title: "Industry Visit and Soft Skills Development Programme",
-    date: "October, 2026",
+    date: "October, 2025",
     category: "workshops",
     image: "/assets/events/industry-visit-1.jpg",
     description: "Industry Visit and Soft Skills Development Programme is a workshop organized by ATiT Executive Committee.",
@@ -85,7 +85,7 @@ export const eventsData: Event[] = [
     fullDescription:
       "Department of ICT and the Association of Technology IT( ATiT ) successfully organized an Industry Visit and Soft Skills Development Programme in collaboration with SLASSCOM.The event, coordinated by Mr. Wiraj Wickramaarachchi, Senior Lecturer in the Department of ICT, gave students a valuable chance to experience the working world by visiting two top tech companies in Sri Lanka Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd ",
     venue: "Faculty of Technology Rajarata University",
-    time: "Announcing Soon",
+    time: "Completed",
     organizer: "Students' Union, Faculty of Technology",
     highlights: [
       "Collaboration with SLASSCOM for industry exposure",
@@ -103,7 +103,7 @@ export const eventsData: Event[] = [
   {
     id: 4,
     title: "Career Path Selection Programme – UI/UX Design",
-    date: "July, 2026",
+    date: "July, 2025",
     category: "workshops",
     image: "/assets/events/ui-ux-1.jpg",
     description: "Career Path Selection Programme on UI/UX Design",
@@ -128,7 +128,7 @@ export const eventsData: Event[] = [
   {
     id: 5,
     title: "Career Path Selection Programme – Business Analysis workshop",
-    date: "July, 2026",
+    date: "July, 2025",
     category: "workshops",
     image: "/assets/events/business-analysis-1.jpg",
     description: "Career Path Selection Programme on UI/UX Design",
@@ -153,7 +153,7 @@ export const eventsData: Event[] = [
   {
     id: 6,
     title: "Career Path Selection Programme – Cloud Development",
-    date: "June, 2026",
+    date: "June, 2025",
     category: "workshops",
     image: "/assets/events/cloud-dev-1.jpg",
     description: "Career Path Selection Programme on Cloud Development",

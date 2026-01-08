@@ -1,7 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, PanInfo, useMotionValue, useTransform } from 'motion/react';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { motion, PanInfo, useMotionValue, useTransform, AnimatePresence } from 'motion/react';
 // replace icons with your own if needed
-import { FileText, Circle, Layers, Layout, Code } from 'lucide-react';
+import { FileText, Circle, Layers, Layout, Code, X } from 'lucide-react';
 import './Carousel.css';
 
 export interface CarouselItem {
@@ -80,6 +80,26 @@ export default function Carousel({
   const x = useMotionValue(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isResetting, setIsResetting] = useState<boolean>(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+
+  const closeLightbox = useCallback(() => setLightboxImage(null), []);
+
+  // Escape key to close lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && lightboxImage) {
+        closeLightbox();
+      }
+    };
+    if (lightboxImage) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [lightboxImage, closeLightbox]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -195,7 +215,10 @@ export default function Carousel({
               transition={effectiveTransition}
             >
               {item.image ? (
-                <div className="carousel-item-image-wrapper">
+                <div
+                  className="carousel-item-image-wrapper cursor-pointer"
+                  onClick={() => setLightboxImage(item.image!)}
+                >
                   <img src={item.image} alt={item.title} className="carousel-item-bg-image" />
                   <div className="carousel-item-overlay">
                     <div className="carousel-item-content">
@@ -234,6 +257,38 @@ export default function Carousel({
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeLightbox}
+          >
+            <motion.button
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              onClick={closeLightbox}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.button>
+            <motion.img
+              src={lightboxImage}
+              alt="Full size view"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

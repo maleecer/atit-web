@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import localFont from "next/font/local"
-import { Analytics } from "@vercel/analytics/next"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { Footer } from "@/components/footer"
 import { PageLoader } from "@/components/page-loader"
 import { ScrollToTop } from "@/components/scroll-to-top"
@@ -157,7 +157,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
-          <Analytics />
+          <GoogleAnalytics gaId="G-2YGCZ3B6XH" />
           <Toaster
             theme="dark"
             position="bottom-right"

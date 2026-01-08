@@ -1,17 +1,38 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
+import { X } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { PageBackground } from "@/components/page-background"
 import { galleryData } from "@/data"
 
 export default function GalleryPage() {
   const [displayCount, setDisplayCount] = useState(6)
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null)
   const totalMax = 10
   const limitedData = galleryData.slice(0, totalMax)
   const visibleItems = limitedData.slice(0, displayCount)
+
+  const closeLightbox = useCallback(() => setLightboxImage(null), [])
+
+  // Escape key to close lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && lightboxImage) {
+        closeLightbox()
+      }
+    }
+    if (lightboxImage) {
+      document.addEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
+  }, [lightboxImage, closeLightbox])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -85,6 +106,7 @@ export default function GalleryPage() {
                   animate="visible"
                   exit={{ opacity: 0, scale: 0.9 }}
                   whileHover={{ y: -8 }}
+                  onClick={() => setLightboxImage({ src: item.image, alt: item.alt })}
                   className="relative h-72 rounded-2xl overflow-hidden bg-muted group cursor-pointer border border-border/50 hover:border-accent/30 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-accent/5"
                 >
                   <Image
@@ -130,6 +152,52 @@ export default function GalleryPage() {
           )}
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeLightbox}
+          >
+            <motion.button
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              onClick={closeLightbox}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.button>
+            <motion.div
+              className="relative max-w-[90vw] max-h-[85vh] w-full h-full"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={lightboxImage.src}
+                alt={lightboxImage.alt}
+                fill
+                className="object-contain rounded-lg"
+                sizes="90vw"
+              />
+            </motion.div>
+            <motion.p
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 text-sm font-medium"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              {lightboxImage.alt}
+            </motion.p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
