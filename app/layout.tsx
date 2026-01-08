@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import localFont from "next/font/local"
-import { GoogleAnalytics } from "@next/third-parties/google"
+import Script from "next/script"
 import { Footer } from "@/components/footer"
 import { PageLoader } from "@/components/page-loader"
 import { ScrollToTop } from "@/components/scroll-to-top"
@@ -155,7 +155,30 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
-          <GoogleAnalytics gaId={verificationCodes.googleAnalytics} />
+
+          {/* Google Analytics with explicit cookie domain for .edu.lk */}
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${verificationCodes.googleAnalytics}`}
+          />
+          <Script
+            id="google-analytics-config"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${verificationCodes.googleAnalytics}', {
+                  page_path: window.location.pathname,
+                  cookie_domain: window.location.hostname === 'localhost' ? 'none' : 'www.atit-rajarata.edu.lk',
+                  cookie_flags: 'SameSite=None;Secure'
+                });
+              `,
+            }}
+          />
+
           <Toaster
             theme="dark"
             position="bottom-right"
