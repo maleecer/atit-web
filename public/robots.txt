@@ -1,5 +1,3 @@
-# ATIT Rajarata Website - Robots.txt
-# IMPORTANT: Update sitemap URL when domain is finalized
 
 User-agent: *
 Allow: /
@@ -8,7 +6,4 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location (update domain when finalized)
-Sitemap: https://atit-rajarata.edu.lk/sitemap.xml
-
-# Crawl-delay (optional - remove if you want faster indexing)
-# Crawl-delay: 1
+Sitemap: https://www.atit-rajarata.edu.lk/sitemap.xml

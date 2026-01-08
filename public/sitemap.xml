@@ -4,7 +4,7 @@
   
   <!-- Home Page - Highest Priority -->
   <url>
-    <loc>https://atit-rajarata.edu.lk/</loc>
+    <loc>https://www.atit-rajarata.edu.lk/</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -12,7 +12,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://atit-rajarata.edu.lk/about</loc>
+    <loc>https://www.atit-rajarata.edu.lk/about</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -20,7 +20,7 @@
   
   <!-- Events Page - Updates frequently -->
   <url>
-    <loc>https://atit-rajarata.edu.lk/events</loc>
+    <loc>https://www.atit-rajarata.edu.lk/events</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -28,7 +28,7 @@
   
   <!-- Projects Page -->
   <url>
-    <loc>https://atit-rajarata.edu.lk/projects</loc>
+    <loc>https://www.atit-rajarata.edu.lk/projects</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -36,7 +36,7 @@
   
   <!-- Gallery Page -->
   <url>
-    <loc>https://atit-rajarata.edu.lk/gallery</loc>
+    <loc>https://www.atit-rajarata.edu.lk/gallery</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -44,7 +44,7 @@
   
   <!-- Contact Page -->
   <url>
-    <loc>https://atit-rajarata.edu.lk/contact</loc>
+    <loc>https://www.atit-rajarata.edu.lk/contact</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

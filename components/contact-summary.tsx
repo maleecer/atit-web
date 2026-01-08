@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { socialLinks as siteSocialLinks } from "@/lib/seo-config"
 
 export function ContactSummary() {
     return (
@@ -41,7 +42,7 @@ export function ContactSummary() {
                         Whether you have a question about our events, want to collaborate on a project, or just want to say hi, we're always open to new connections.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
                         <Link
                             href="/contact"
                             className="px-10 py-4 rounded-full bg-foreground text-background font-bold text-lg hover:bg-foreground/90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-foreground/10"
@@ -58,6 +59,25 @@ export function ContactSummary() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </a>
+                    </div>
+
+                    <div className="flex items-center justify-center gap-8">
+                        {Object.entries(siteSocialLinks).map(([name, href], index) => (
+                            <motion.a
+                                key={name}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 + index * 0.1 }}
+                                viewport={{ once: true }}
+                                whileHover={{ y: -2 }}
+                                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium uppercase tracking-widest"
+                            >
+                                {name}
+                            </motion.a>
+                        ))}
                     </div>
                 </motion.div>
             </div>

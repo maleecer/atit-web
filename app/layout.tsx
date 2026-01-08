@@ -8,7 +8,7 @@ import { PageLoader } from "@/components/page-loader"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 import { GlobalStructuredData } from "@/components/structured-data"
-import { SITE_URL, siteConfig, pageMetadata } from "@/lib/seo-config"
+import { SITE_URL, siteConfig, pageMetadata, verificationCodes } from "@/lib/seo-config"
 import { Toaster } from "sonner"
 import "./globals.css"
 
@@ -105,25 +105,23 @@ export const metadata: Metadata = {
     icon: [
       {
         url: "/assets/atit-logo-rounded.png",
-        media: "(prefers-color-scheme: light)",
+        sizes: "32x32",
+        type: "image/png",
       },
       {
         url: "/assets/atit-logo-rounded.png",
-        media: "(prefers-color-scheme: dark)",
+        sizes: "48x48",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
-    shortcut: "/assets/atit-logo-rounded.png",
+    apple: [
+      {
+        url: "/assets/atit-logo-rounded.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
-
-  // Manifest for PWA
-  manifest: "/manifest.json",
-
-  // Verification codes - uncomment and add codes when available
-  // verification: {
-  //   google: "your-google-verification-code",
-  //   yandex: "your-yandex-verification-code",
-  // },
 
   // Category
   category: "education",
@@ -157,7 +155,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
-          <GoogleAnalytics gaId="G-2YGCZ3B6XH" />
+          <GoogleAnalytics gaId={verificationCodes.googleAnalytics} />
           <Toaster
             theme="dark"
             position="bottom-right"

@@ -4,17 +4,17 @@
 // ============================================================
 // DOMAIN PLACEHOLDER - UPDATE WHEN DOMAIN IS FINALIZED
 // ============================================================
-export const SITE_URL = "https://atit-rajarata.edu.lk"
+export const SITE_URL = "https://www.atit-rajarata.edu.lk"
 
 // ============================================================
 // SITE INFORMATION
 // ============================================================
 export const siteConfig = {
   name: "ATIT Rajarata",
-  shortName: "ATIT",
+  shortName: "ATiT",
   fullName: "Association of Technology IT - Rajarata University",
   description:
-    "ATIT is the student-led technology innovation club at Faculty of Technology, Rajarata University of Sri Lanka. Join us to explore cutting-edge technology, participate in workshops, hackathons, and build innovative projects.",
+    "Association of Technology IT - Rajarata University of Sri Lanka. Explore workshops, hackathons, projects, and connect with tech enthusiasts.",
   tagline: "Innovate. Create. Transform.",
   keywords: [
     "ATIT",
@@ -69,9 +69,9 @@ export const siteConfig = {
 // ============================================================
 export const socialLinks = {
   facebook: "https://facebook.com/atitrajarata",
-  linkedin: "https://linkedin.com/company/atit-rajarata",
-  whatsapp: "https://wa.me/94771234567",
-  discord: "https://discord.gg/atit",
+  linkedin: "https://www.linkedin.com/company/atit-rajarata-fot/",
+  whatsapp: "https://chat.whatsapp.com/HPkiU3iYm1Q7YgKzGNDkIH",
+  discord: "https://discord.gg/zjcKZYqxrG",
 }
 
 // ============================================================
@@ -128,5 +128,5 @@ export const siteNavigation = [
 export const verificationCodes = {
   google: "", // Google Search Console verification code
   bing: "", // Bing Webmaster Tools verification code
-  googleAnalytics: "", // GA4 Measurement ID (G-XXXXXXXXXX)
+  googleAnalytics: "G-2YGCZ3B6XH", // GA4 Measurement ID (G-XXXXXXXXXX)
 }
