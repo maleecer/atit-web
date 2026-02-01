@@ -34,6 +34,17 @@ export function WhoWeAreSection({ data }: WhoWeAreSectionProps) {
     const images = useMemo(() => data.carouselImages.filter(Boolean), [data.carouselImages])
     const [activeIndex, setActiveIndex] = useState(0)
     const containerRef = useRef<HTMLElement>(null)
+    const [carouselWidth, setCarouselWidth] = useState(450)
+
+    // Responsive carousel width
+    useEffect(() => {
+        const updateWidth = () => {
+            setCarouselWidth(window.innerWidth < 640 ? 370 : 450)
+        }
+        updateWidth()
+        window.addEventListener('resize', updateWidth)
+        return () => window.removeEventListener('resize', updateWidth)
+    }, [])
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -145,7 +156,7 @@ export function WhoWeAreSection({ data }: WhoWeAreSectionProps) {
                     <div className="relative h-[350px] sm:h-[500px] w-full flex items-center justify-center">
                         <Carousel
                             items={carouselItems}
-                            baseWidth={450}
+                            baseWidth={carouselWidth}
                             height={300}
                             autoplay={true}
                             autoplayDelay={4000}
