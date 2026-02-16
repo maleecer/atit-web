@@ -59,7 +59,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
-const SPRING_OPTIONS = { type: 'spring', stiffness: 300, damping: 30 } as const;
+const SPRING_OPTIONS = { type: 'spring', stiffness: 500, damping: 40 } as const;
 
 export default function Carousel({
   items = DEFAULT_ITEMS,
@@ -118,20 +118,19 @@ export default function Carousel({
 
   useEffect(() => {
     if (autoplay && (!pauseOnHover || !isHovered)) {
-      const timer = setInterval(() => {
-        setCurrentIndex(prev => {
-          if (prev === items.length - 1 && loop) {
-            return prev + 1;
-          }
-          if (prev === carouselItems.length - 1) {
-            return loop ? 0 : prev;
-          }
-          return prev + 1;
-        });
+      const timer = setTimeout(() => {
+        if (currentIndex === items.length - 1 && loop) {
+          setCurrentIndex(currentIndex + 1);
+        } else if (currentIndex === carouselItems.length - 1) {
+          if (!loop) return;
+          setCurrentIndex(0);
+        } else {
+          setCurrentIndex(currentIndex + 1);
+        }
       }, autoplayDelay);
-      return () => clearInterval(timer);
+      return () => clearTimeout(timer);
     }
-  }, [autoplay, autoplayDelay, isHovered, loop, items.length, carouselItems.length, pauseOnHover]);
+  }, [autoplay, autoplayDelay, isHovered, loop, items.length, carouselItems.length, pauseOnHover, currentIndex]);
 
   const effectiveTransition = isResetting ? { duration: 0 } : SPRING_OPTIONS;
 

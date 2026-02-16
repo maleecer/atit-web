@@ -6,7 +6,7 @@ export const teamMembersData = [
     department: "Information Technology",
     image: "/assets/team/President.webp",
     social: {
-      linkedin: "https://linkedin.com/in/ashanw",
+      linkedin: "https://www.linkedin.com/in/miyuruh",
       github: "https://github.com/ashanw",
     },
   },
@@ -17,7 +17,7 @@ export const teamMembersData = [
     department: "Software Engineering",
     image: "/assets/team/vice_presidant.webp",
     social: {
-      linkedin: "https://linkedin.com/in/lakshmif",
+      linkedin: "https://www.linkedin.com/in/rasika00",
       github: "https://github.com/lakshmif",
     },
   },
@@ -28,7 +28,7 @@ export const teamMembersData = [
     department: "ICT",
     image: "/assets/team/Secretary.webp",
     social: {
-      linkedin: "https://linkedin.com/in/tharushig",
+      linkedin: "https://www.linkedin.com/in/lakshani-lasintha-6b04a8335",
       github: "https://github.com/tharushig",
     },
   },
@@ -39,7 +39,7 @@ export const teamMembersData = [
     department: "Multimedia",
     image: "/assets/team/editor.webp",
     social: {
-      linkedin: "https://linkedin.com/in/nuwanb",
+      linkedin: "https://www.linkedin.com/in/viduladeneth/",
       github: "https://github.com/nuwanb",
     },
   },
@@ -50,7 +50,7 @@ export const teamMembersData = [
     department: "Information Systems",
     image: "/assets/team/treasurer.webp",
     social: {
-      linkedin: "https://linkedin.com/in/chamaras",
+      linkedin: "https://www.linkedin.com/in/tshenalx/",
       github: "https://github.com/chamaras",
     },
   },
@@ -61,7 +61,7 @@ export const teamMembersData = [
     department: "ICT",
     image: "/assets/team/event_organizer.webp",
     social: {
-      linkedin: "https://linkedin.com/in/dilinij",
+      linkedin: "https://www.linkedin.com/in/shalish-wickramasurendra-781267324/",
       github: "https://github.com/dilinij",
     },
   },
@@ -72,7 +72,7 @@ export const teamMembersData = [
     department: "Computer Science",
     image: "/assets/team/web_lead.webp",
     social: {
-      linkedin: "https://linkedin.com/in/kavindap",
+      linkedin: "https://www.linkedin.com/in/dushmin-maleesha/",
       github: "https://github.com/kavindap",
     },
   },
@@ -83,7 +83,7 @@ export const teamMembersData = [
     department: "Business IT",
     image: "/assets/team/technical_lead.webp",
     social: {
-      linkedin: "https://linkedin.com/in/sachinir",
+      linkedin: "https://www.linkedin.com/in/sajith-weerathunge-b28483340",
       github: "https://github.com/sachinir",
     }
   },
@@ -96,7 +96,7 @@ export const teamMembersData = [
     department: "Information Technology",
     image: "/assets/team/Junior_Secretary.webp",
     social: {
-      linkedin: "https://linkedin.com",
+      linkedin: "https://www.linkedin.com/in/chalani-asanka-193629364",
       github: "https://github.com",
     },
   },
@@ -118,7 +118,7 @@ export const teamMembersData = [
     department: "Information Technology",
     image: "/assets/team/Junior_Editor.webp",
     social: {
-      linkedin: "https://linkedin.com",
+      linkedin: "www.linkedin.com/in/darshana-w-bandara",
       github: "https://github.com",
     },
   },
