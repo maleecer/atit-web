@@ -78,3 +78,7 @@ Thumbs.db
 
 # Sentry
 .sentryclirc
+
+
+.agents
+.claude
