@@ -108,6 +108,11 @@ export const pageMetadata = {
     description:
       "Get in touch with ATIT Rajarata. Reach us via email, visit the Faculty of Technology, or connect on social media. We'd love to hear from you!",
   },
+  extru: {
+    title: "EXTRU 2026",
+    description:
+      "ATiT at EXTRU 2026 - Join us at the Faculty of Technology's premier Tech Exhibition.",
+  },
 }
 
 // ============================================================
@@ -118,6 +123,7 @@ export const siteNavigation = [
   { name: "About", path: "/about" },
   { name: "Events", path: "/events" },
   { name: "Projects", path: "/projects" },
+  { name: "Extru", path: "/extru" },
   { name: "Gallery", path: "/gallery" },
   { name: "Contact", path: "/contact" },
 ]

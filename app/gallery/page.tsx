@@ -56,7 +56,7 @@ export default function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
-      <PageBackground />
+      <PageBackground variant="dots" />
       <Navigation />
 
       {/* Hero */}

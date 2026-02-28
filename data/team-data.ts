@@ -5,6 +5,7 @@ export const teamMembersData = [
     role: "President",
     department: "Information Technology",
     image: "/assets/team/President.webp",
+    bio: "Leading the ATiT team to foster innovation and technological excellence.",
     social: {
       linkedin: "https://linkedin.com/in/ashanw",
       github: "https://github.com/ashanw",
@@ -16,6 +17,7 @@ export const teamMembersData = [
     role: "Vice President",
     department: "Software Engineering",
     image: "/assets/team/vice_presidant.webp",
+    bio: "Supporting the continuous growth and success of all society initiatives.",
     social: {
       linkedin: "https://linkedin.com/in/lakshmif",
       github: "https://github.com/lakshmif",
@@ -27,6 +29,7 @@ export const teamMembersData = [
     role: "Secretary",
     department: "ICT",
     image: "/assets/team/Secretary.webp",
+    bio: "Ensuring smooth communication and administrative excellence across the board.",
     social: {
       linkedin: "https://linkedin.com/in/tharushig",
       github: "https://github.com/tharushig",
@@ -38,6 +41,7 @@ export const teamMembersData = [
     role: "Editor",
     department: "Multimedia",
     image: "/assets/team/editor.webp",
+    bio: "Crafting engaging content and managing digital presence for ATiT.",
     social: {
       linkedin: "https://linkedin.com/in/nuwanb",
       github: "https://github.com/nuwanb",
@@ -49,6 +53,7 @@ export const teamMembersData = [
     role: "Treasurer",
     department: "Information Systems",
     image: "/assets/team/treasurer.webp",
+    bio: "Managing financial operations to support our events and programs.",
     social: {
       linkedin: "https://linkedin.com/in/chamaras",
       github: "https://github.com/chamaras",
@@ -60,6 +65,7 @@ export const teamMembersData = [
     role: "Event Organizer",
     department: "ICT",
     image: "/assets/team/event_organizer.webp",
+    bio: "Orchestrating memorable events and workshops for the university community.",
     social: {
       linkedin: "https://linkedin.com/in/dilinij",
       github: "https://github.com/dilinij",
@@ -71,6 +77,7 @@ export const teamMembersData = [
     role: "Web Lead",
     department: "Computer Science",
     image: "/assets/team/web_lead.webp",
+    bio: "Architecting and maintaining the digital infrastructure and website.",
     social: {
       linkedin: "https://linkedin.com/in/kavindap",
       github: "https://github.com/kavindap",
@@ -95,6 +102,7 @@ export const teamMembersData = [
     role: "Junior Secretary",
     department: "Information Technology",
     image: "/assets/team/Junior_Secretary.webp",
+    bio: "Assisting in administrative duties and ensuring all communications flow seamlessly.",
     social: {
       linkedin: "https://linkedin.com",
       github: "https://github.com",
@@ -106,6 +114,7 @@ export const teamMembersData = [
     role: "Junior Event Organizer",
     department: "Information Technology",
     image: "/assets/team/Junior_Event_Organizer.webp",
+    bio: "Helping coordinate logistics and operations for our various workshops and tech events.",
     social: {
       linkedin: "https://linkedin.com",
       github: "https://github.com",
@@ -117,6 +126,7 @@ export const teamMembersData = [
     role: "Junior Editor",
     department: "Information Technology",
     image: "/assets/team/Junior_Editor.webp",
+    bio: "Creating compelling graphics and written content to showcase society activities.",
     social: {
       linkedin: "https://linkedin.com",
       github: "https://github.com",
@@ -128,6 +138,7 @@ export const teamMembersData = [
     role: "Junior Treasurer",
     department: "Information Technology",
     image: "/assets/team/Junior_Event_Treasurer.webp",
+    bio: "Supporting financial tracking and budget adherence for active ATiT initiatives.",
     social: {
       linkedin: "https://linkedin.com",
       github: "https://github.com",

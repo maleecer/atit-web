@@ -24,6 +24,10 @@ export type { Feature, Stat, Value, TimelineItem } from "./site-data"
 export { blogPosts } from "./blog-data"
 export type { BlogPost } from "./blog-data"
 
+// Extru 2026
+export { extruData } from "./extru-data"
+export type { ExtruProject, ExtruEntertainment } from "./extru-data"
+
 // Legacy exports for backward compatibility
 // These re-export data that was previously in home-data.ts
 export { teamMembersData as teamData } from "./team-data"

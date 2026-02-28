@@ -45,7 +45,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="min-h-screen bg-background relative">
-      <PageBackground />
+      <PageBackground variant="combined" />
       <Navigation />
 
       {/* Hero section */}

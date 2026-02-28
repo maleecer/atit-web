@@ -181,7 +181,7 @@ function EventsContent() {
 export default function EventsPage() {
   return (
     <main className="min-h-screen bg-background relative">
-      <PageBackground />
+      <PageBackground variant="grid" />
       <Navigation />
       <Suspense fallback={<div className="pt-32 text-center text-muted-foreground">Loading events...</div>}>
         <EventsContent />

@@ -22,9 +22,37 @@ export interface Event {
 
 export const eventsData: Event[] = [
   {
+    id: 2,
+    title: "Extru 2026",
+    date: "March 6-7, 2026",
+    category: "Exhibition",
+    image: "/assets/events/extru-1.jpeg",
+    description: "Extru 2026 is the flagship exhibition of Faculty of Technology, Rajarata University.",
+    status: "upcoming",
+    fullDescription:
+      "EXTRU (Exhibition of Technology at Rajarata University) is the premier technology exhibition organized by the Faculty of Technology. This grand event showcases cutting-edge student projects, research innovations, and technological breakthroughs developed by our talented students. Visitors from across the country including industry professionals, academics, and prospective students come to witness the future of technology.",
+    venue: "Faculty of Technology, Rajarata University",
+    time: "9am - 4pm",
+    organizer: "Students' Union, Faculty of Technology",
+    highlights: [
+      "100+ innovative student projects on display",
+      "Live demonstrations of AI and IoT solutions",
+      "Interactive robotics showcase",
+      "Gaming Competition & Entertainment",
+      "Virtual and Augmented Reality experiences"
+    ],
+    gallery: [
+      "/assets/events/extru-1.jpeg",
+      "/assets/events/extru-2.jpg",
+      "/assets/events/extru-3.jpg",
+      "/assets/events/extru-4.jpg",
+    ],
+  },
+  {
+    
     id: 1,
     title: "ATiT Week",
-    date: "January, 2026",
+    date: "Coming Soon",
     category: "Event",
     image: "/assets/events/atit-week-banner.png",
     description: "The ATiT Week is a series of IT-focused events organized by the Association of Technology IT (ATiT).",
@@ -46,34 +74,7 @@ export const eventsData: Event[] = [
       "/assets/events/atit-week-2.jpg",
     ],
   },
-  {
-    id: 2,
-    title: "Extru 2026",
-    date: "March, 2026",
-    category: "Exhibition",
-    image: "/assets/events/extru-1.jpeg",
-    description: "Extru 2026 is the flagship exhibition of Faculty of Technology, Rajarata University.",
-    status: "upcoming",
-    fullDescription:
-      "EXTRU (Exhibition of Technology at Rajarata University) is the premier technology exhibition organized by the Faculty of Technology. This grand event showcases cutting-edge student projects, research innovations, and technological breakthroughs developed by our talented students. Visitors from across the country including industry professionals, academics, and prospective students come to witness the future of technology.",
-    venue: "Faculty of Technology Rajarata University",
-    time: "Announcing Soon",
-    organizer: "Students' Union, Faculty of Technology",
-    highlights: [
-      "100+ innovative student projects on display",
-      "Live demonstrations of AI and IoT solutions",
-      "Interactive robotics showcase",
-      "Virtual and Augmented Reality experiences",
-      "Startup pitching competition",
-      "Industry partnership announcements",
-    ],
-    gallery: [
-      "/assets/events/extru-1.jpeg",
-      "/assets/events/extru-2.jpg",
-      "/assets/events/extru-3.jpg",
-      "/assets/events/extru-4.jpg",
-    ],
-  },
+  
   {
     id: 3,
     title: "Industry Visit and Soft Skills Development Programme",
@@ -83,10 +84,10 @@ export const eventsData: Event[] = [
     description: "Industry Visit and Soft Skills Development Programme is a workshop organized by ATiT Executive Committee.",
     status: "past",
     fullDescription:
-      "Department of ICT and the Association of Technology IT( ATiT ) successfully organized an Industry Visit and Soft Skills Development Programme in collaboration with SLASSCOM.The event, coordinated by Mr. Wiraj Wickramaarachchi, Senior Lecturer in the Department of ICT, gave students a valuable chance to experience the working world by visiting two top tech companies in Sri Lanka Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd ",
+      "Department of ICT and the Association of Technology IT( ATiT ) successfully attend an Industry Visit and Soft Skills Development Programme organized by academic staff and collaboration with SLASSCOM.The event, coordinated by Mr. Wiraj Wickramaarachchi, Senior Lecturer in the Department of ICT, gave students a valuable chance to experience the working world by visiting two top tech companies in Sri Lanka Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd ",
     venue: "Faculty of Technology Rajarata University",
     time: "Completed",
-    organizer: "Students' Union, Faculty of Technology",
+    organizer: "Academic Staff",
     highlights: [
       "Collaboration with SLASSCOM for industry exposure",
       "Visits to Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd",

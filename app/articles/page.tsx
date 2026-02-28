@@ -7,7 +7,7 @@ import { PageBackground } from "@/components/page-background"
 export default function ArticlesPage() {
     return (
         <main className="min-h-screen bg-background relative">
-            <PageBackground />
+            <PageBackground variant="combined" />
             <Navigation />
 
             <section className="pt-32 pb-20 px-6 relative z-10 flex items-center justify-center min-h-[calc(100vh-80px)]">
