@@ -113,6 +113,11 @@ export const pageMetadata = {
     description:
       "ATiT at EXTRU 2026 - Join us at the Faculty of Technology's premier Tech Exhibition.",
   },
+  articles: {
+    title: "Articles",
+    description:
+      "Read insightful articles on technology, innovation, and IT trends from the ATIT Rajarata community.",
+  },
 }
 
 // ============================================================
