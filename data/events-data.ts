@@ -81,7 +81,7 @@ export const eventsData: Event[] = [
     date: "October, 2025",
     category: "workshops",
     image: "/assets/events/industry-visit-1.jpg",
-    description: "Industry Visit and Soft Skills Development Programme is a workshop organized by ATiT Executive Committee.",
+    description: "Industry Visit and Soft Skills Development Programme is a workshop organized by Acadmic staff of Department of ICT.",
     status: "past",
     fullDescription:
       "Department of ICT and the Association of Technology IT( ATiT ) successfully attend an Industry Visit and Soft Skills Development Programme organized by academic staff and collaboration with SLASSCOM.The event, coordinated by Mr. Wiraj Wickramaarachchi, Senior Lecturer in the Department of ICT, gave students a valuable chance to experience the working world by visiting two top tech companies in Sri Lanka Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd ",
