@@ -10,12 +10,14 @@ const nextConfig = {
     "www.atit-rajarata.edu.lk",
     "atit-rajarata.edu.lk",
   ],
-  serverActions: {
-    allowedOrigins: [
-      "www.atit-rajarata.edu.lk",
-      "atit-rajarata.edu.lk",
-      "localhost:3000",
-    ],
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        "www.atit-rajarata.edu.lk",
+        "atit-rajarata.edu.lk",
+        "localhost:3000",
+      ],
+    },
   },
 }
 
