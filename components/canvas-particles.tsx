@@ -36,7 +36,7 @@ export function CanvasParticles() {
       const THREE = await import("three")
 
       const config = {
-        canvas: canvasRef.current,
+        canvas: canvasRef.current as HTMLCanvasElement,
         winWidth: window.innerWidth,
         winHeight: window.innerHeight,
         aspectRatio: window.innerWidth / window.innerHeight,
@@ -88,7 +88,7 @@ export function CanvasParticles() {
         vertexShader: particleVertex,
         fragmentShader: particleFragment,
         uniforms: {
-          uTime: { type: "f", value: 0 },
+          uTime: { value: 0 },
         },
       })
 

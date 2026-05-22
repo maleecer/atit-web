@@ -48,8 +48,10 @@ export function OrganizationSchema() {
 
     return (
         <script
+            id="organization-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
         />
     )
 }
@@ -75,8 +77,10 @@ export function WebSiteSchema() {
 
     return (
         <script
+            id="website-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
         />
     )
 }
@@ -104,8 +108,10 @@ export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
 
     return (
         <script
+            id="breadcrumb-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
         />
     )
 }
@@ -129,8 +135,10 @@ export function SiteNavigationSchema() {
 
     return (
         <script
+            id="sitenavigation-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
         />
     )
 }
@@ -176,8 +184,10 @@ export function WebPageSchema({ title, description, path, breadcrumbs }: WebPage
 
     return (
         <script
+            id="webpage-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
         />
     )
 }
@@ -228,8 +238,10 @@ export function EventSchema({ name, description, startDate, endDate, location, i
 
     return (
         <script
+            id="event-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
         />
     )
 }
@@ -263,8 +275,10 @@ export function CollectionPageSchema({ title, description, path, collectionType 
 
     return (
         <script
+            id="collectionpage-schema"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
         />
     )
 }
@@ -292,6 +306,68 @@ export function ContactPageSchema() {
                     availableLanguage: ["English", "Sinhala"],
                 },
             ],
+        },
+    }
+
+    return (
+        <script
+            id="contactpage-schema"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            suppressHydrationWarning
+        />
+    )
+}
+
+// ============================================================
+// Article/BlogPosting Schema
+// For individual article pages
+// ============================================================
+interface ArticleSchemaProps {
+    title: string
+    description: string
+    url: string
+    imageUrl?: string
+    datePublished: string
+    dateModified: string
+    authorName: string
+    authorUrl?: string
+}
+
+export function ArticleSchema({
+    title,
+    description,
+    url,
+    imageUrl,
+    datePublished,
+    dateModified,
+    authorName,
+    authorUrl,
+}: ArticleSchemaProps) {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": url,
+        },
+        headline: title,
+        description: description,
+        ...(imageUrl && { image: imageUrl }),
+        datePublished: datePublished,
+        dateModified: dateModified,
+        author: {
+            "@type": "Person",
+            name: authorName,
+            ...(authorUrl && { url: authorUrl }),
+        },
+        publisher: {
+            "@type": "Organization",
+            name: siteConfig.name,
+            logo: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}${siteConfig.logos.default}`,
+            },
         },
     }
 

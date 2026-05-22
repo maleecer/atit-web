@@ -4,10 +4,12 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function PageLoader() {
+    const [isMounted, setIsMounted] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [progress, setProgress] = useState(0)
 
     useEffect(() => {
+        setIsMounted(true)
         // Simulate loading progress
         const interval = setInterval(() => {
             setProgress((prev) => {
@@ -257,7 +259,7 @@ export function PageLoader() {
                     </div>
 
                     {/* Floating particles */}
-                    {[...Array(6)].map((_, i) => (
+                    {isMounted && [...Array(6)].map((_, i) => (
                         <motion.div
                             key={i}
                             className="absolute w-1 h-1 rounded-full bg-accent/40"

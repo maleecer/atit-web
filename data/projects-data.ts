@@ -2,28 +2,29 @@
 // Contains all project information including details shown in project modal
 
 export interface ProjectLink {
-  demo?: string
-  github?: string
+  demo?: string;
+  github?: string;
+  article?: string;
 }
 
 export interface Project {
-  id: number
-  title: string
-  category: string
-  description: string
-  image: string
-  tags: string[]
-  fullDescription?: string
-  features?: string[]
-  technologies?: string[]
-  team?: string[]
-  gallery?: string[]
-  links?: ProjectLink
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  tags: string[];
+  fullDescription?: string;
+  features?: string[];
+  technologies?: string[];
+  team?: string[];
+  gallery?: string[];
+  links?: ProjectLink;
 }
 
 export const projectsData: Project[] = [
   {
-    id: 1,
+    id: 999,
     title: "Smart House Automation System",
     category: "Arduino",
     description:
@@ -39,7 +40,14 @@ export const projectsData: Project[] = [
       "Energy consumption optimization",
       "Historical data analysis and reporting",
     ],
-    technologies: ["Arduino", "Node.js", "MongoDB", "React", "MQTT", "InfluxDB"],
+    technologies: [
+      "Arduino",
+      "Node.js",
+      "MongoDB",
+      "React",
+      "MQTT",
+      "InfluxDB",
+    ],
     team: ["Vikum Kalhara"],
     gallery: ["/assets/projects/smart-house-project.jpg"],
     links: {
@@ -48,10 +56,11 @@ export const projectsData: Project[] = [
     },
   },
   {
-    id: 2,
+    id: 1000,
     title: "Automated Trafic Light System",
     category: "Arduino",
-    description: "A traffic light system that uses sensors to detect the number of vehicles and adjusts the traffic light timing accordingly.",
+    description:
+      "A traffic light system that uses sensors to detect the number of vehicles and adjusts the traffic light timing accordingly.",
     image: "/assets/projects/smart-traffic-system.jpg",
     tags: ["Arduino", "IoT", "Real-time Data"],
     fullDescription:
@@ -72,10 +81,11 @@ export const projectsData: Project[] = [
     },
   },
   {
-    id: 3,
+    id: 1001,
     title: "Arduino CNC Drawing Machine",
     category: "Arduino",
-    description: "A low-cost, Arduino-based CNC drawing machine that automatically draws images, patterns, and text on paper with high accuracy.",
+    description:
+      "A low-cost, Arduino-based CNC drawing machine that automatically draws images, patterns, and text on paper with high accuracy.",
     image: "/assets/projects/arduino-cnc-drawing-machine.jpg",
     tags: ["Arduino", "CNC", "Drawing Machine"],
     fullDescription:
@@ -94,4 +104,4 @@ export const projectsData: Project[] = [
       github: "#",
     },
   },
-]
+];

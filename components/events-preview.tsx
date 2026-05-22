@@ -11,6 +11,7 @@ interface Event {
   category: string
   image: string
   description: string
+  customLink?: string
 }
 
 interface EventsPreviewProps {
@@ -66,46 +67,50 @@ export function EventsPreview({ events }: EventsPreviewProps) {
           viewport={{ once: true }}
         >
           {events.map((event) => (
-            <motion.div
+            <Link
               key={event.id}
-              variants={itemVariants}
-              whileHover={{ y: -8 }}
-              className="rounded-xl overflow-hidden bg-card border border-border/50 hover:border-secondary/50 transition-colors group cursor-pointer"
+              href={event.customLink || `/events?id=${event.id}`}
+              className="block h-full"
             >
-              {/* Event image */}
-              <div className="relative h-48 overflow-hidden bg-white">
-                <motion.img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <div className="absolute top-4 right-4">
-                  <div className="px-3 py-1 rounded-full bg-secondary/80 backdrop-blur-sm text-xs font-semibold text-background">
-                    {event.category}
+              <motion.div
+                variants={itemVariants}
+                whileHover={{ y: -8 }}
+                className="rounded-xl overflow-hidden bg-card border border-border/50 hover:border-secondary/50 transition-colors group cursor-pointer h-full flex flex-col"
+              >
+                {/* Event image */}
+                <div className="relative h-48 overflow-hidden bg-white">
+                  <motion.img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <div className="absolute top-4 right-4">
+                    <div className="px-3 py-1 rounded-full bg-secondary/80 backdrop-blur-sm text-xs font-semibold text-background">
+                      {event.category}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Event details */}
-              <div className="p-6">
-                <h3 className="text-lg font-bold mb-2 group-hover:text-secondary transition-colors">{event.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{event.date}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{event.description}</p>
-                <Link
-                  href={`/events?id=${event.id}`}
-                  className="text-sm font-semibold text-secondary hover:text-accent transition-colors flex items-center gap-2 group/link"
-                >
-                  <motion.span whileHover={{ x: 5 }} className="flex items-center gap-2">
-                    Learn More
-                    <svg className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </motion.span>
-                </Link>
-              </div>
-            </motion.div>
+                {/* Event details */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-secondary transition-colors">{event.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{event.date}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-grow">{event.description}</p>
+                  <div
+                    className="text-sm font-semibold text-secondary hover:text-accent transition-colors flex items-center gap-2 group/link"
+                  >
+                    <motion.span whileHover={{ x: 5 }} className="flex items-center gap-2">
+                      Learn More
+                      <svg className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </motion.span>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
 

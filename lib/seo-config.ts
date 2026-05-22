@@ -21,6 +21,15 @@ export const siteConfig = {
     "ATIT Rajarata",
     "Rajarata University",
     "RUSL FOT",
+    "FOT RUSL",
+    "rusl fot",
+    "fot rusl",
+    "Faculty of Technology Rajarata",
+    "Rajarata University of Sri Lanka",
+    "Faculty of Technology, Rajarata University of Sri Lanka",
+    "rajarata university faculty of technology",
+    "FOT Rajarata",
+    "Rajarata FOT",
     "Technology Club",
     "Innovation Hub",
     "Student Organization",
@@ -43,6 +52,7 @@ export const siteConfig = {
 
   // Contact information
   email: "atit@tec.rjt.ac.lk",
+  phone: "+94 25 226 6645",
 
   // Address
   address: {
@@ -79,42 +89,42 @@ export const socialLinks = {
 // ============================================================
 export const pageMetadata = {
   home: {
-    title: "ATIT Rajarata - Faculty of Technology | RUSL",
+    title: "ATIT Rajarata | Faculty of Technology (FOT) | Rajarata University (RUSL)",
     description:
-      "Association of Technology IT - Rajarata University. Explore workshops, hackathons, projects, and connect with tech enthusiasts.",
+      "Association of Technology IT (ATIT) - Faculty of Technology (FOT), Rajarata University of Sri Lanka (RUSL). Connecting tech enthusiasts, developers, and engineers.",
   },
   about: {
-    title: "About Us",
+    title: "About Us | FOT RUSL",
     description:
-      "Learn about ATIT Rajarata - our mission, vision, values, and the passionate team driving innovation at the Faculty of Technology, Rajarata University of Sri Lanka.",
+      "Learn about ATIT Rajarata - our mission, vision, values, and the passionate team driving innovation at the Faculty of Technology (FOT), Rajarata University of Sri Lanka (RUSL).",
   },
   events: {
-    title: "Events & Workshops",
+    title: "Events & Workshops | FOT RUSL",
     description:
-      "Discover upcoming and past ATIT events including tech workshops, hackathons, seminars, and exhibitions. Join our community to learn and grow together.",
+      "Discover upcoming and past ATIT events including tech workshops, hackathons, seminars, and exhibitions. Join our community at Rajarata University of Sri Lanka.",
   },
   projects: {
-    title: "Our Projects",
+    title: "Our Projects | FOT RUSL",
     description:
-      "Explore innovative student projects by ATIT members - from AI and IoT solutions to web applications and mobile apps solving real-world problems.",
+      "Explore innovative student projects by ATIT members - from AI and IoT solutions to web applications and mobile apps solving real-world problems at the Faculty of Technology.",
   },
   gallery: {
-    title: "Gallery",
+    title: "Gallery | FOT RUSL",
     description:
-      "Browse photos and memories from ATIT events, workshops, hackathons, and community activities at Rajarata University.",
+      "Browse photos and memories from ATIT events, workshops, hackathons, and community activities at the Faculty of Technology, Rajarata University.",
   },
   contact: {
-    title: "Contact Us",
+    title: "Contact Us | FOT RUSL",
     description:
       "Get in touch with ATIT Rajarata. Reach us via email, visit the Faculty of Technology, or connect on social media. We'd love to hear from you!",
   },
   extru: {
-    title: "EXTRU 2026",
+    title: "EXTRU 2026 | Tech Exhibition",
     description:
       "ATiT at EXTRU 2026 - Join us at the Faculty of Technology's premier Tech Exhibition.",
   },
   articles: {
-    title: "Articles",
+    title: "Articles & Tech Blog | FOT RUSL",
     description:
       "Read insightful articles on technology, innovation, and IT trends from the ATIT Rajarata community.",
   },

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react"
 import { motion } from "framer-motion"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 import { Navigation } from "@/components/navigation"
 import { PageBackground } from "@/components/page-background"
 import { eventsData } from "@/data"
@@ -12,6 +12,7 @@ type EventCategory = "All" | "Workshop" | "Competition" | "Seminar" | "Event" | 
 
 function EventsContent() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const [selectedCategory, setSelectedCategory] = useState<EventCategory>("All")
   const [selectedEvent, setSelectedEvent] = useState<EventDetail | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -21,11 +22,15 @@ function EventsContent() {
     if (eventId) {
       const event = eventsData.find((e) => e.id === Number(eventId))
       if (event) {
-        setSelectedEvent(event as EventDetail)
-        setIsModalOpen(true)
+        if (event.customLink) {
+          router.replace(event.customLink)
+        } else {
+          setSelectedEvent(event as EventDetail)
+          setIsModalOpen(true)
+        }
       }
     }
-  }, [searchParams])
+  }, [searchParams, router])
 
   const categories: EventCategory[] = ["All", "Event", "Exhibition", "Workshop", "Competition", "Seminar"]
 
@@ -52,8 +57,12 @@ function EventsContent() {
   }
 
   const handleEventClick = (event: EventDetail) => {
-    setSelectedEvent(event)
-    setIsModalOpen(true)
+    if (event.customLink) {
+      router.push(event.customLink)
+    } else {
+      setSelectedEvent(event)
+      setIsModalOpen(true)
+    }
   }
 
   const handleCloseModal = () => {
