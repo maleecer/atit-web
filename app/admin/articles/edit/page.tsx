@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { PageBackground } from "@/components/page-background"
@@ -32,7 +32,7 @@ const defaultFormData: FormData = {
   tag_ids: [],
 }
 
-export default function ArticleFormPage() {
+function ArticleFormContent() {
   const router = useRouter()
   const supabase = createClient()
   const searchParams = useSearchParams()
@@ -397,5 +397,21 @@ export default function ArticleFormPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+export default function ArticleFormPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-background relative">
+        <PageBackground variant="combined" />
+        <Navigation />
+        <div className="pt-32 flex items-center justify-center min-h-[calc(100vh-80px)]">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-foreground" />
+        </div>
+      </main>
+    }>
+      <ArticleFormContent />
+    </Suspense>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -13,7 +13,7 @@ interface ArticleWithRelations extends Article {
   tags: Tag[]
 }
 
-export default function ArticlesPage() {
+function ArticlesContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [articles, setArticles] = useState<ArticleWithRelations[]>([])
@@ -266,5 +266,21 @@ export default function ArticlesPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+export default function ArticlesPage() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-background relative">
+        <PageBackground variant="combined" />
+        <Navigation />
+        <div className="pt-32 flex items-center justify-center min-h-[calc(100vh-80px)]">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-foreground" />
+        </div>
+      </main>
+    }>
+      <ArticlesContent />
+    </Suspense>
   )
 }
