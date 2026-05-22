@@ -13,7 +13,7 @@ export default function Home() {
       <HeroSection title={heroData.title} subtitle={heroData.subtitle} cta={heroData.cta} logo={heroData.logo} />
       <WhoWeAreSection data={whoWeAreData} />
       <EventsPreview events={eventsData.slice(0, 3)} />
-      <ProjectsPreview projects={projectsData} />
+      <ProjectsPreview projects={[...projectsData].sort((a, b) => b.id - a.id)} />
       <ContactSummary />
     </main>
   )

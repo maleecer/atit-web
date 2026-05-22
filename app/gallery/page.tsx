@@ -11,7 +11,7 @@ import { galleryData } from "@/data"
 export default function GalleryPage() {
   const [displayCount, setDisplayCount] = useState(6)
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null)
-  const totalMax = 10
+  const totalMax = galleryData.length
   const limitedData = galleryData.slice(0, totalMax)
   const visibleItems = limitedData.slice(0, displayCount)
 
@@ -135,7 +135,7 @@ export default function GalleryPage() {
               className="mt-16 text-center"
             >
               <button
-                onClick={() => setDisplayCount(prev => Math.min(prev + 3, totalMax))}
+                onClick={() => setDisplayCount(prev => Math.min(prev + 6, totalMax))}
                 className="px-8 py-4 bg-muted hover:bg-accent hover:text-accent-foreground text-foreground rounded-full font-semibold transition-all duration-300 border border-border hover:border-accent shadow-sm flex items-center gap-2 mx-auto group"
               >
                 Show More

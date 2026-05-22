@@ -11,7 +11,6 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Events", href: "/events" },
   { label: "Projects", href: "/projects" },
-  { label: "EXTRU", href: "/extru" },
   { label: "Articles", href: "/articles" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
@@ -94,34 +93,15 @@ export function Navigation({ logo }: NavigationProps) {
                 ))}
               </div>
               {navItems.map((item) => {
-                const isExtru = item.label === "EXTRU"
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative px-4 py-2 text-sm font-medium transition-colors group ${
-                      isExtru 
-                        ? "text-emerald-400 font-extrabold hover:text-cyan-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" 
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
+                    className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
                   >
-                    {isExtru && (
-                      <span className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 blur-sm rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-                    )}
-                    <span className="relative z-10 flex items-center gap-1">
-                      {item.label}
-                      {isExtru && (
-                        <motion.span 
-                          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }} 
-                          transition={{ repeat: Infinity, duration: 2 }}
-                          className="text-[10px]"
-                        >
-                          ✦
-                        </motion.span>
-                      )}
-                    </span>
+                    <span className="relative z-10">{item.label}</span>
                     <motion.span
-                      className={`absolute bottom-1 left-4 right-4 h-px origin-left ${isExtru ? "bg-cyan-400" : "bg-foreground"}`}
+                      className="absolute bottom-1 left-4 right-4 h-px bg-foreground origin-left"
                       initial={{ scaleX: 0 }}
                       whileHover={{ scaleX: 1 }}
                       transition={{ duration: 0.2 }}
@@ -168,7 +148,6 @@ export function Navigation({ logo }: NavigationProps) {
           >
             <div className="p-4 space-y-1">
               {navItems.map((item, index) => {
-                const isExtru = item.label === "EXTRU"
                 return (
                   <motion.div
                     key={item.href}
@@ -178,23 +157,10 @@ export function Navigation({ logo }: NavigationProps) {
                   >
                     <Link
                       href={item.href}
-                      className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors flex items-center justify-between ${
-                        isExtru 
-                          ? "text-emerald-400 font-extrabold hover:bg-emerald-500/10 border border-transparent hover:border-emerald-500/20" 
-                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                      }`}
+                      className="block px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
-                      <span>{item.label}</span>
-                      {isExtru && (
-                        <motion.span 
-                          animate={{ rotate: 180 }} 
-                          transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                          className="text-cyan-400 text-xs"
-                        >
-                          ✦
-                        </motion.span>
-                      )}
+                      {item.label}
                     </Link>
                   </motion.div>
                 )

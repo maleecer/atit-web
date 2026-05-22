@@ -1,15 +1,57 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { motion } from "framer-motion"
+import { useSearchParams, useRouter } from "next/navigation"
 import { Navigation } from "@/components/navigation"
 import { PageBackground } from "@/components/page-background"
-import { projectsData } from "@/data"
+import { projectsData, extruData } from "@/data"
 import { ProjectDetailModal, type ProjectDetail } from "@/components/project-detail-modal"
 
-export default function ProjectsPage() {
+// Merge standard and EXTRU projects at module scope to avoid recalculation on render
+const standardProjects: ProjectDetail[] = projectsData as ProjectDetail[]
+const mappedExtruProjects: ProjectDetail[] = extruData.projects.map((p) => ({
+  id: p.id + 100, // Offset IDs to avoid collision with standard projects
+  title: p.title,
+  category: "EXTRU",
+  description: p.description,
+  image: p.image,
+  tags: p.tags,
+  fullDescription: `${p.title} is an innovative project showcased at the EXTRU 2026 exhibition. ${p.description}`,
+  features: [],
+  technologies: p.tags,
+  team: ["Faculty of Technology Students"],
+  gallery: [p.image],
+  links: p.links,
+}))
+
+const allProjects = [...standardProjects, ...mappedExtruProjects].sort((a, b) => b.id - a.id)
+
+function ProjectsContent() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState<string>("All")
+
+  const categories = ["All", "Arduino", "EXTRU"]
+
+  useEffect(() => {
+    const projectId = searchParams.get("id")
+    if (projectId) {
+      const project = allProjects.find((p) => p.id === Number(projectId))
+      if (project) {
+        setSelectedProject(project)
+        setIsModalOpen(true)
+        if (project.category === "EXTRU") {
+          setSelectedCategory("EXTRU")
+        } else if (project.category === "Arduino") {
+          setSelectedCategory("Arduino")
+        }
+      }
+    }
+  }, [searchParams])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,16 +80,20 @@ export default function ProjectsPage() {
   const handleCloseModal = () => {
     setIsModalOpen(false)
     setSelectedProject(null)
+    
+    // Clear search parameters when modal is closed
+    const params = new URLSearchParams(searchParams.toString())
+    params.delete("id")
+    const newQuery = params.toString() ? `?${params.toString()}` : ""
+    router.replace(`/projects${newQuery}`, { scroll: false })
   }
 
-  // Use project data directly from home-data.ts (now includes all extended details)
-  const projects: ProjectDetail[] = projectsData as ProjectDetail[]
+  const filteredProjects = selectedCategory === "All"
+    ? allProjects
+    : allProjects.filter((project) => project.category === selectedCategory)
 
   return (
-    <main className="min-h-screen bg-background relative">
-      <PageBackground variant="combined" />
-      <Navigation />
-
+    <>
       {/* Hero section */}
       <section className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -76,6 +122,29 @@ export default function ProjectsPage() {
         </div>
       </section>
 
+      {/* Filter buttons */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((category) => (
+              <motion.button
+                key={category}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all ${
+                  selectedCategory === category
+                    ? "bg-foreground text-background"
+                    : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30"
+                }`}
+              >
+                {category}
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Projects grid */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -85,7 +154,7 @@ export default function ProjectsPage() {
             initial="hidden"
             animate="visible"
           >
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
@@ -140,31 +209,19 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-2xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-card border border-border rounded-2xl p-10"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground">Have an Idea?</h2>
-            <p className="text-muted-foreground mb-8">
-              We're always looking for innovative project ideas. Collaborate with us and bring your vision to life.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-8 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors"
-            >
-              Submit Your Idea
-            </motion.button>
-          </motion.div>
-        </div>
-      </section> */}
-
       <ProjectDetailModal project={selectedProject} isOpen={isModalOpen} onClose={handleCloseModal} />
+    </>
+  )
+}
+
+export default function ProjectsPage() {
+  return (
+    <main className="min-h-screen bg-background relative">
+      <PageBackground variant="combined" />
+      <Navigation />
+      <Suspense fallback={<div className="pt-32 text-center text-muted-foreground">Loading projects...</div>}>
+        <ProjectsContent />
+      </Suspense>
     </main>
   )
 }

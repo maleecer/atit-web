@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { extruData } from "@/data/extru-data"
+import { extruData, type ExtruEntertainment } from "@/data/extru-data"
 import { Gamepad2, Activity, Joystick, Brain } from "lucide-react"
 
 // Icon mapper
@@ -39,7 +39,7 @@ export function ExtruEntertainment() {
 
           {/* Entertainment item layout */}
           <div className="md:w-2/3 w-full">
-            {extruData.entertainment.map((item, i) => {
+            {extruData.entertainment.map((item: ExtruEntertainment, i: number) => {
               const Icon = IconMap[item.icon] || Gamepad2
               
               return (

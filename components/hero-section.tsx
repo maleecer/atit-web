@@ -79,7 +79,8 @@ export function HeroSection({ title, subtitle, cta, logo }: HeroProps) {
           variants={itemVariants}
           className="mb-6"
         >
-          <img src={logo.src} alt="ATIT Logo" className="h-[150px] sm:h-[150px] lg:h-[300px] mx-auto" />
+          <h1 className="sr-only">ATIT Rajarata | Faculty of Technology (FOT), Rajarata University of Sri Lanka (RUSL)</h1>
+          <img src={logo.src} alt="ATIT Rajarata - Faculty of Technology (FOT) - Rajarata University of Sri Lanka (RUSL)" className="h-[150px] sm:h-[150px] lg:h-[300px] mx-auto" />
         </motion.div>
 
         {/* Subtitle */}
