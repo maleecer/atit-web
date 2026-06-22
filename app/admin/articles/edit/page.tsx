@@ -245,9 +245,14 @@ function ArticleFormContent() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Content (Student's plain text) *
-                  </label>
+                  <div className="flex justify-between items-center mb-2">
+                    <label className="block text-sm font-medium text-foreground">
+                      Content (Markdown Formatted) *
+                    </label>
+                    <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
+                      Markdown Enabled
+                    </span>
+                  </div>
                   <textarea
                     value={formData.content}
                     onChange={(e) =>
@@ -256,11 +261,34 @@ function ArticleFormContent() {
                     required
                     rows={15}
                     className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-foreground/50 resize-none font-mono text-sm"
-                    placeholder="Paste the student's article content here. The system will auto-format it when displayed."
+                    placeholder="Write article in Markdown. E.g.
+# Major Heading
+## Sub Heading
+
+Here is standard text with **bold** text and [links](url).
+
+- Bullet 1
+- Bullet 2
+
+```javascript
+// code blocks
+console.log('hello world');
+```"
                   />
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Paste plain text content. The system will automatically format headings, paragraphs, and links when displayed.
-                  </p>
+                  <div className="mt-2 p-3 bg-muted/40 border border-border rounded-lg text-xs space-y-1 text-muted-foreground">
+                    <p className="font-semibold text-foreground mb-1">Markdown Cheat Sheet:</p>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1 font-mono">
+                      <div># Heading 1 (main title)</div>
+                      <div>## Heading 2 (section)</div>
+                      <div>**bold text** / *italic text*</div>
+                      <div>[Link Text](url)</div>
+                      <div>- Unordered List Item</div>
+                      <div>1. Ordered List Item</div>
+                      <div>`inline code`</div>
+                      <div>&gt; Blockquote</div>
+                      <div className="col-span-2">```javascript [newline] code block [newline] ```</div>
+                    </div>
+                  </div>
                 </div>
 
                 <div>

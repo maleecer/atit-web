@@ -4,59 +4,25 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Article } from "@/lib/supabase-articles"
 import { SITE_URL } from "@/lib/seo-config"
+import { marked } from "marked"
+
+// Configure marked options
+marked.setOptions({
+  breaks: true,
+  gfm: true,
+})
 
 interface ArticleClientProps {
   article: Article
 }
 
 function formatContent(content: string): string {
-  const lines = content.split("\n\n")
-  let html = ""
-  let inList = false
-
-  for (const block of lines) {
-    const trimmed = block.trim()
-    if (!trimmed) continue
-
-    // Check for heading (ALL CAPS or ending with colon)
-    if (trimmed.match(/^[A-Z][A-Z\s]+:?$/) || (trimmed.length < 60 && trimmed.endsWith(":"))) {
-      if (inList) { html += "</ul>"; inList = false }
-      html += `<h2 class="text-2xl font-bold text-foreground mt-8 mb-4">${trimmed.replace(/:$/, "")}</h2>`
-      continue
-    }
-
-    // Check for numbered list (steps)
-    if (trimmed.match(/^\d+\.\s+/)) {
-      if (!inList) { html += '<ul class="space-y-3 my-6 ml-6">'; inList = true }
-      const text = trimmed.replace(/^\d+\.\s+/, "")
-      const processed = text
-        .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">$1</code>')
-        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" class="text-foreground underline hover:opacity-80" target="_blank" rel="noopener">$1</a>')
-      html += `<li class="text-foreground/90">${processed}</li>`
-      continue
-    }
-
-    if (inList) { html += "</ul>"; inList = false }
-
-    // Check for code block markers
-    if (trimmed.startsWith("```")) {
-      const code = trimmed.replace(/```\w*/, "").replace(/```$/, "")
-      html += `<pre class="my-6 p-4 bg-muted rounded-xl overflow-x-auto"><code class="text-sm font-mono text-foreground/90">${code.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</code></pre>`
-      continue
-    }
-
-    // Regular paragraph
-    let processed = trimmed
-      .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 bg-muted rounded text-sm font-mono">$1</code>')
-      .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" class="text-foreground underline hover:opacity-80" target="_blank" rel="noopener">$1</a>')
-      .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold">$1</strong>')
-
-    html += `<p class="text-foreground/80 leading-relaxed mb-4">${processed}</p>`
+  try {
+    return marked.parseSync(content) as string
+  } catch (e) {
+    console.error("Failed to parse article content as markdown:", e)
+    return content
   }
-
-  if (inList) html += "</ul>"
-
-  return html
 }
 
 export function ArticleClient({ article }: ArticleClientProps) {
@@ -165,7 +131,7 @@ export function ArticleClient({ article }: ArticleClientProps) {
           </div>
 
           <div
-            className="prose prose-invert max-w-none"
+            className="markdown-content max-w-none"
             dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
           />
 

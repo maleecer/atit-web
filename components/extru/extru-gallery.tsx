@@ -1,68 +1,68 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useState } from "react"
-import { Camera, Play, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Camera, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface GalleryImage {
-  id: number
-  src: string
-  caption: string
-  category: string
+  id: number;
+  src: string;
+  caption: string;
+  category: string;
 }
 
 interface EventHighlight {
-  id: number
-  title: string
-  description: string
-  type: "photo" | "video"
-  thumbnail?: string
+  id: number;
+  title: string;
+  description: string;
+  type: "photo" | "video";
+  thumbnail?: string;
 }
 
 interface ExtruGalleryProps {
-  images: GalleryImage[]
-  highlights: EventHighlight[]
+  images: GalleryImage[];
+  highlights: EventHighlight[];
 }
 
 export function ExtruGallery({ images, highlights }: ExtruGalleryProps) {
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
-  const [touchStartX, setTouchStartX] = useState<number | null>(null)
-  const [touchEndX, setTouchEndX] = useState<number | null>(null)
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
 
   const handlePrev = () => {
-    if (!selectedImage) return
-    const currentIndex = images.findIndex((img) => img.id === selectedImage.id)
-    const prevIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1
-    setSelectedImage(images[prevIndex])
-  }
+    if (!selectedImage) return;
+    const currentIndex = images.findIndex((img) => img.id === selectedImage.id);
+    const prevIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+    setSelectedImage(images[prevIndex]);
+  };
 
   const handleNext = () => {
-    if (!selectedImage) return
-    const currentIndex = images.findIndex((img) => img.id === selectedImage.id)
-    const nextIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0
-    setSelectedImage(images[nextIndex])
-  }
+    if (!selectedImage) return;
+    const currentIndex = images.findIndex((img) => img.id === selectedImage.id);
+    const nextIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+    setSelectedImage(images[nextIndex]);
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX)
-  }
+    setTouchStartX(e.touches[0].clientX);
+  };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEndX(e.touches[0].clientX)
-  }
+    setTouchEndX(e.touches[0].clientX);
+  };
 
   const handleTouchEnd = () => {
-    if (touchStartX === null || touchEndX === null) return
-    const diff = touchStartX - touchEndX
-    const swipeThreshold = 50
+    if (touchStartX === null || touchEndX === null) return;
+    const diff = touchStartX - touchEndX;
+    const swipeThreshold = 50;
     if (diff > swipeThreshold) {
-      handleNext()
+      handleNext();
     } else if (diff < -swipeThreshold) {
-      handlePrev()
+      handlePrev();
     }
-    setTouchStartX(null)
-    setTouchEndX(null)
-  }
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
 
   return (
     <section className="py-16 sm:py-24 px-4 sm:px-6 relative z-10 w-full overflow-hidden">
@@ -82,7 +82,8 @@ export function ExtruGallery({ images, highlights }: ExtruGalleryProps) {
             Event Highlights
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
-            Relive the best moments from EXTRU 2026 through our photo gallery and video highlights.
+            Relive the best moments from EXTRU 2026 through our photo gallery
+            and video highlights.
           </p>
         </motion.div>
 
@@ -104,7 +105,9 @@ export function ExtruGallery({ images, highlights }: ExtruGalleryProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                <p className="text-[10px] sm:text-xs text-white/90 line-clamp-2">{image.caption}</p>
+                <p className="text-[10px] sm:text-xs text-white/90 line-clamp-2">
+                  {image.caption}
+                </p>
               </div>
               <div className="absolute top-2 right-2 sm:top-3 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-[8px] sm:text-[10px] font-bold uppercase bg-white/20 backdrop-blur-sm text-white rounded-full border border-white/20">
@@ -122,17 +125,12 @@ export function ExtruGallery({ images, highlights }: ExtruGalleryProps) {
           transition={{ duration: 0.6 }}
           className="mt-16 max-w-[360px] mx-auto"
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 text-center">Video Highlight</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 text-center">
+            Video Highlight
+          </h3>
           <div className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 p-2">
             <div className="relative w-full h-0 pb-[177.7778%] overflow-hidden rounded-xl bg-black">
-              <iframe
-                src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7437318382296936448?compact=true"
-                className="absolute top-0 left-0 w-full h-full border-0"
-                allowFullScreen
-                scrolling="no"
-                allow="encrypted-media *;"
-                title="EXTRU 2026 Highlight Video"
-              />
+              <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7437225640572973056?collapsed=1" height="876" width="504" title="Embedded post"></iframe>
             </div>
           </div>
           <div className="flex justify-center mt-4">
@@ -172,8 +170,8 @@ export function ExtruGallery({ images, highlights }: ExtruGalleryProps) {
           <button
             className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-10 flex"
             onClick={(e) => {
-              e.stopPropagation()
-              handlePrev()
+              e.stopPropagation();
+              handlePrev();
             }}
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -192,16 +190,20 @@ export function ExtruGallery({ images, highlights }: ExtruGalleryProps) {
               className="max-w-full max-h-[70vh] sm:max-h-[75vh] object-contain rounded-lg mx-auto pointer-events-none"
             />
             <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
-              <p className="text-white text-center text-sm sm:text-base">{selectedImage.caption}</p>
-              <span className="text-[10px] sm:text-xs text-white/60 text-center block mt-1">{selectedImage.category}</span>
+              <p className="text-white text-center text-sm sm:text-base">
+                {selectedImage.caption}
+              </p>
+              <span className="text-[10px] sm:text-xs text-white/60 text-center block mt-1">
+                {selectedImage.category}
+              </span>
             </div>
           </motion.div>
 
           <button
             className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-10 flex"
             onClick={(e) => {
-              e.stopPropagation()
-              handleNext()
+              e.stopPropagation();
+              handleNext();
             }}
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -209,5 +211,5 @@ export function ExtruGallery({ images, highlights }: ExtruGalleryProps) {
         </motion.div>
       )}
     </section>
-  )
+  );
 }
