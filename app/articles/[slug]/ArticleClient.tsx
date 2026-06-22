@@ -18,7 +18,11 @@ interface ArticleClientProps {
 
 function formatContent(content: string): string {
   try {
-    return marked.parseSync(content) as string
+    const html = marked.parse(content);
+    if (typeof html === "string") {
+      return html;
+    }
+    return content;
   } catch (e) {
     console.error("Failed to parse article content as markdown:", e)
     return content
