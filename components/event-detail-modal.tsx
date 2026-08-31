@@ -21,6 +21,7 @@ export interface EventDetail {
   highlights?: string[]
   gallery?: string[]
   registrationLink?: string
+  customLink?: string
 }
 
 interface EventDetailModalProps {
@@ -31,6 +32,17 @@ interface EventDetailModalProps {
 
 export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
 
   useEffect(() => {
     setCurrentImageIndex(0)
@@ -73,7 +85,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-5xl max-h-[90vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl h-[85vh] max-h-[90vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col"
           >
             {/* Close button */}
             <motion.button
@@ -85,9 +97,9 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               <X className="w-5 h-5" />
             </motion.button>
 
-            <div className="flex flex-col lg:flex-row h-full max-h-[90vh]">
+            <div className="flex flex-col lg:flex-row flex-grow overflow-hidden min-h-0">
               {/* Left: Image carousel */}
-              <div className="lg:w-1/2 relative bg-muted">
+              <div className="lg:w-1/2 relative bg-muted shrink-0 lg:h-full">
                 <div className="aspect-video lg:aspect-auto lg:h-full relative overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.img
@@ -151,7 +163,7 @@ export function EventDetailModal({ event, isOpen, onClose }: EventDetailModalPro
               </div>
 
               {/* Right: Content */}
-              <div className="lg:w-1/2 p-6 lg:p-8 overflow-y-auto custom-scrollbar">
+              <div className="lg:w-1/2 p-6 lg:p-8 overflow-y-auto custom-scrollbar flex-1 min-h-0">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
                   {/* Title */}
                   <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">{event.title}</h2>

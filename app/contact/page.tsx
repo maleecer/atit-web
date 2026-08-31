@@ -142,7 +142,7 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-background relative">
-      <PageBackground />
+      <PageBackground variant="grid" />
       <Navigation />
 
       {/* Hero */}

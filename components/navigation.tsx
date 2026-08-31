@@ -92,21 +92,23 @@ export function Navigation({ logo }: NavigationProps) {
                   </motion.a>
                 ))}
               </div>
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  {item.label}
-                  <motion.span
-                    className="absolute bottom-1 left-4 right-4 h-px bg-foreground origin-left"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    <motion.span
+                      className="absolute bottom-1 left-4 right-4 h-px bg-foreground origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.2 }}
+                    />
+                  </Link>
+                )
+              })}
             </div>
 
             {/* Mobile Menu Button */}
@@ -145,22 +147,24 @@ export function Navigation({ logo }: NavigationProps) {
             className="md:hidden mx-4 mt-2 rounded-2xl bg-card/95 backdrop-blur-xl border border-border/50 overflow-hidden"
           >
             <div className="p-4 space-y-1">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
-                    onClick={() => setIsOpen(false)}
+              {navItems.map((item, index) => {
+                return (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className="block px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                )
+              })}
               <div className="pt-4 mt-4 border-t border-border/50 flex items-center justify-around">
                 {socialIconLinks.map((social, index) => (
                   <motion.a

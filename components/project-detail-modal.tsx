@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ExternalLink, Github, ArrowLeft, ArrowRight } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export interface ProjectDetail {
     id: number
@@ -18,6 +18,7 @@ export interface ProjectDetail {
     links?: {
         demo?: string
         github?: string
+        article?: string
     }
     team?: string[]
 }
@@ -30,6 +31,21 @@ interface ProjectDetailModalProps {
 
 export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailModalProps) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = ""
+        }
+        return () => {
+            document.body.style.overflow = ""
+        }
+    }, [isOpen])
+
+    useEffect(() => {
+        setCurrentImageIndex(0)
+    }, [project?.id])
 
     if (!project) return null
 
@@ -68,7 +84,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
                         onClick={(e) => e.stopPropagation()}
-                        className="relative w-full max-w-5xl max-h-[90vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl"
+                        className="relative w-full max-w-5xl h-[85vh] max-h-[90vh] bg-card border border-border rounded-2xl overflow-hidden shadow-2xl flex flex-col"
                     >
                         {/* Close button */}
                         <motion.button
@@ -80,9 +96,9 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                             <X className="w-5 h-5" />
                         </motion.button>
 
-                        <div className="flex flex-col lg:flex-row h-full max-h-[90vh]">
+                        <div className="flex flex-col lg:flex-row flex-grow overflow-hidden min-h-0">
                             {/* Left: Image carousel */}
-                            <div className="lg:w-1/2 relative bg-muted">
+                            <div className="lg:w-1/2 relative bg-muted shrink-0 lg:h-full">
                                 <div className="aspect-video lg:aspect-auto lg:h-full relative overflow-hidden">
                                     <AnimatePresence mode="wait">
                                         <motion.img
@@ -146,7 +162,7 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                             </div>
 
                             {/* Right: Content */}
-                            <div className="lg:w-1/2 p-6 lg:p-8 overflow-y-auto custom-scrollbar">
+                            <div className="lg:w-1/2 p-6 lg:p-8 overflow-y-auto custom-scrollbar flex-1 min-h-0">
                                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
                                     {/* Title */}
                                     <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">{project.title}</h2>
@@ -223,43 +239,49 @@ export function ProjectDetailModal({ project, isOpen, onClose }: ProjectDetailMo
                                     )}
 
                                     {/* Links */}
-                                    <div className="flex gap-3 mt-8">
-                                        {project.links?.demo && (
-                                            <motion.a
-                                                href={project.links.demo}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.02 }}
-                                                whileTap={{ scale: 0.98 }}
-                                                className="flex-1 py-3 px-4 bg-foreground text-background font-semibold rounded-lg flex items-center justify-center gap-2 hover:bg-foreground/90 transition-colors"
-                                            >
-                                                <ExternalLink className="w-4 h-4" />
-                                                View Demo
-                                            </motion.a>
-                                        )}
-                                        {project.links?.github && (
-                                            <motion.a
-                                                href={project.links.github}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                whileHover={{ scale: 1.02 }}
-                                                whileTap={{ scale: 0.98 }}
-                                                className="flex-1 py-3 px-4 bg-muted text-foreground font-semibold rounded-lg flex items-center justify-center gap-2 border border-border hover:bg-muted/80 transition-colors"
-                                            >
-                                                <Github className="w-4 h-4" />
-                                                Source Code
-                                            </motion.a>
-                                        )}
-                                        {!project.links?.demo && !project.links?.github && (
-                                            <motion.button
-                                                whileHover={{ scale: 1.02 }}
-                                                whileTap={{ scale: 0.98 }}
-                                                className="w-full py-3 px-4 bg-foreground text-background font-semibold rounded-lg hover:bg-foreground/90 transition-colors"
-                                            >
-                                                Request More Info
-                                            </motion.button>
-                                        )}
-                                    </div>
+                                    {((project.links?.demo) || (project.links?.github) || (project.links?.article)) && (
+                                        <div className="flex flex-wrap gap-3 mt-8">
+                                            {project.links?.demo && (
+                                                <motion.a
+                                                    href={project.links.demo}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    whileHover={{ scale: 1.02 }}
+                                                    whileTap={{ scale: 0.98 }}
+                                                    className="flex-1 min-w-[140px] py-3 px-4 bg-foreground text-background font-semibold rounded-lg flex items-center justify-center gap-2 hover:bg-foreground/90 transition-colors"
+                                                >
+                                                    <ExternalLink className="w-4 h-4" />
+                                                    View Demo
+                                                </motion.a>
+                                            )}
+                                            {project.links?.github && (
+                                                <motion.a
+                                                    href={project.links.github}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    whileHover={{ scale: 1.02 }}
+                                                    whileTap={{ scale: 0.98 }}
+                                                    className="flex-1 min-w-[140px] py-3 px-4 bg-muted text-foreground font-semibold rounded-lg flex items-center justify-center gap-2 border border-border hover:bg-muted/80 transition-colors"
+                                                >
+                                                    <Github className="w-4 h-4" />
+                                                    Source Code
+                                                </motion.a>
+                                            )}
+                                            {project.links?.article && (
+                                                <motion.a
+                                                    href={project.links.article}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    whileHover={{ scale: 1.02 }}
+                                                    whileTap={{ scale: 0.98 }}
+                                                    className="flex-1 min-w-[140px] py-3 px-4 bg-emerald-600 text-white font-semibold rounded-lg flex items-center justify-center gap-2 hover:bg-emerald-500 transition-colors"
+                                                >
+                                                    <ExternalLink className="w-4 h-4" />
+                                                    Show Article
+                                                </motion.a>
+                                            )}
+                                        </div>
+                                    )}
                                 </motion.div>
                             </div>
                         </div>

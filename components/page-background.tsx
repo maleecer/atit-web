@@ -2,7 +2,11 @@
 
 import { motion } from "framer-motion"
 
-export function PageBackground() {
+interface PageBackgroundProps {
+  variant?: "dots" | "grid" | "combined"
+}
+
+export function PageBackground({ variant = "combined" }: PageBackgroundProps) {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
       {/* Top glimpse gradient */}
@@ -13,15 +17,36 @@ export function PageBackground() {
         }}
       />
 
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
+      {/* Background Patterns */}
+      <div 
+        className="absolute inset-0" 
+        style={{ 
+          maskImage: "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)"
         }}
-      />
+      >
+        {(variant === "grid" || variant === "combined") && (
+          <div
+            className={`absolute inset-0 ${variant === "combined" ? "opacity-[0.015]" : "opacity-[0.03]"}`}
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                               linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
+              backgroundSize: "60px 60px",
+            }}
+          />
+        )}
+        
+        {(variant === "dots" || variant === "combined") && (
+          <div
+            className={`absolute inset-0 ${variant === "combined" ? "opacity-[0.04]" : "opacity-[0.06]"}`}
+            style={{
+              backgroundImage: "radial-gradient(circle, rgba(255,255,255,1) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+              backgroundPosition: "0 0"
+            }}
+          />
+        )}
+      </div>
 
       {/* Floating orbs */}
       <motion.div

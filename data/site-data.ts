@@ -4,6 +4,7 @@
 // Navigation data
 export const navData = {
   logo: { src: "/assets/atit-logo-rounded.png" },
+  extruLogo: { src: "/assets/events/extru-white.png" },
 }
 
 // Hero section data

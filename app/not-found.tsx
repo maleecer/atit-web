@@ -8,7 +8,7 @@ import { PageBackground } from "@/components/page-background"
 export default function NotFound() {
     return (
         <main className="min-h-screen bg-background relative overflow-hidden">
-            <PageBackground />
+            <PageBackground variant="dots" />
             <Navigation />
 
             {/* Floating geometric shapes */}

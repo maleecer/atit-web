@@ -49,5 +49,21 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <!-- EXTRU 2026 Page -->
+  <url>
+    <loc>https://www.atit-rajarata.edu.lk/extru</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Articles Page -->
+  <url>
+    <loc>https://www.atit-rajarata.edu.lk/articles</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
 

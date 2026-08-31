@@ -78,3 +78,8 @@ Thumbs.db
 
 # Sentry
 .sentryclirc
+
+
+.agents
+.claude
+skills-lock.json

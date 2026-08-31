@@ -11,7 +11,7 @@ import { aboutData, timelineData, teamMembersData } from "@/data"
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background relative">
-      <PageBackground />
+      <PageBackground variant="dots" />
       <Navigation />
 
       <section className="pt-32 pb-20 px-6 relative z-10">

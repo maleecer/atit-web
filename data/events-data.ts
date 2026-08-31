@@ -1,26 +1,56 @@
 // Events data for the ATIT website
 // Contains all event information including details shown in event modal
 
-export type EventStatus = 'upcoming' | 'open' | 'closed' | 'past'
+export type EventStatus = "upcoming" | "open" | "closed" | "past";
 
 export interface Event {
-  id: number
-  title: string
-  date: string
-  category: string
-  image: string
-  description: string
-  status: EventStatus
-  fullDescription?: string
-  venue?: string
-  time?: string
-  organizer?: string
-  highlights?: string[]
-  gallery?: string[]
-  registrationLink?: string
+  id: number;
+  title: string;
+  date: string;
+  category: string;
+  image: string;
+  description: string;
+  status: EventStatus;
+  fullDescription?: string;
+  venue?: string;
+  time?: string;
+  organizer?: string;
+  highlights?: string[];
+  gallery?: string[];
+  registrationLink?: string;
+  customLink?: string;
 }
 
 export const eventsData: Event[] = [
+  {
+    id: 2,
+    title: "Extru 2026",
+    date: "March 6-7, 2026",
+    category: "Exhibition",
+    image: "/assets/events/extru_2026.jpg",
+    description:
+      "Extru 2026 is the flagship exhibition of Faculty of Technology, Rajarata University.",
+    status: "upcoming",
+    customLink: "/extru",
+    fullDescription:
+      "EXTRU (Exhibition of Technology at Rajarata University) is the premier technology exhibition organized by the Faculty of Technology. This grand event showcases cutting-edge student projects, research innovations, and technological breakthroughs developed by our talented students. Visitors from across the country including industry professionals, academics, and prospective students come to witness the future of technology.",
+    venue: "Faculty of Technology, Rajarata University",
+    time: "9am - 4pm",
+    organizer: "Students' Union, Faculty of Technology",
+    highlights: [
+      "100+ innovative student projects on display",
+      "Live demonstrations of AI and IoT solutions",
+      "Interactive robotics showcase",
+      "Gaming Competition & Entertainment",
+      "Virtual and Augmented Reality experiences",
+    ],
+    gallery: [
+      "/assets/events/extru-1.jpeg",
+      "/assets/events/extru-2.jpg",
+      "/assets/events/extru-3.jpg",
+      "/assets/events/extru-4.jpg",
+    ],
+  },
   {
     id: 1,
     title: "GitHub × Vibe Coding Workshop",
@@ -50,10 +80,11 @@ export const eventsData: Event[] = [
   {
     id: 2,
     title: "ATiT Week",
-    date: "January, 2026",
+    date: "Coming Soon",
     category: "Event",
     image: "/assets/events/atit-week-banner.png",
-    description: "The ATiT Week is a series of IT-focused events organized by the Association of Technology IT (ATiT).",
+    description:
+      "The ATiT Week is a series of IT-focused events organized by the Association of Technology IT (ATiT).",
     status: "upcoming",
     fullDescription:
       "ATiT Week is our flagship annual celebration that brings together the entire technology community at Rajarata University. This week-long extravaganza features project exhibitions, technical workshops, hackathons, guest lectures from industry experts, and networking sessions. Students get the opportunity to showcase their innovative projects, compete in coding challenges, and connect with potential employers and mentors.",
@@ -72,47 +103,21 @@ export const eventsData: Event[] = [
       "/assets/events/atit-week-2.jpg",
     ],
   },
-  {
-    id: 3,
-    title: "Extru 2026",
-    date: "March, 2026",
-    category: "Exhibition",
-    image: "/assets/events/extru-1.jpeg",
-    description: "Extru 2026 is the flagship exhibition of Faculty of Technology, Rajarata University.",
-    status: "upcoming",
-    fullDescription:
-      "EXTRU (Exhibition of Technology at Rajarata University) is the premier technology exhibition organized by the Faculty of Technology. This grand event showcases cutting-edge student projects, research innovations, and technological breakthroughs developed by our talented students. Visitors from across the country including industry professionals, academics, and prospective students come to witness the future of technology.",
-    venue: "Faculty of Technology Rajarata University",
-    time: "Announcing Soon",
-    organizer: "Students' Union, Faculty of Technology",
-    highlights: [
-      "100+ innovative student projects on display",
-      "Live demonstrations of AI and IoT solutions",
-      "Interactive robotics showcase",
-      "Virtual and Augmented Reality experiences",
-      "Startup pitching competition",
-      "Industry partnership announcements",
-    ],
-    gallery: [
-      "/assets/events/extru-1.jpeg",
-      "/assets/events/extru-2.jpg",
-      "/assets/events/extru-3.jpg",
-      "/assets/events/extru-4.jpg",
-    ],
-  },
+
   {
     id: 4,
     title: "Industry Visit and Soft Skills Development Programme",
     date: "October, 2025",
     category: "workshops",
     image: "/assets/events/industry-visit-1.jpg",
-    description: "Industry Visit and Soft Skills Development Programme is a workshop organized by ATiT Executive Committee.",
+    description:
+      "Industry Visit and Soft Skills Development Programme is a workshop organized by Acadmic staff of Department of ICT.",
     status: "past",
     fullDescription:
-      "Department of ICT and the Association of Technology IT( ATiT ) successfully organized an Industry Visit and Soft Skills Development Programme in collaboration with SLASSCOM.The event, coordinated by Mr. Wiraj Wickramaarachchi, Senior Lecturer in the Department of ICT, gave students a valuable chance to experience the working world by visiting two top tech companies in Sri Lanka Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd ",
+      "Department of ICT and the Association of Technology IT( ATiT ) successfully attend an Industry Visit and Soft Skills Development Programme organized by academic staff and collaboration with SLASSCOM.The event, coordinated by Mr. Wiraj Wickramaarachchi, Senior Lecturer in the Department of ICT, gave students a valuable chance to experience the working world by visiting two top tech companies in Sri Lanka Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd ",
     venue: "Faculty of Technology Rajarata University",
     time: "Completed",
-    organizer: "Students' Union, Faculty of Technology",
+    organizer: "Academic Staff",
     highlights: [
       "Collaboration with SLASSCOM for industry exposure",
       "Visits to Virtusa (Pvt) Ltd and Cloud Solution (Pvt) Ltd",
@@ -191,7 +196,7 @@ export const eventsData: Event[] = [
     organizer: "ATIT Association, Dept. of ICT",
     highlights: [
       "Discover career paths in cloud development",
-      "Learn from a seasoned industry professional", 
+      "Learn from a seasoned industry professional",
     ],
     gallery: [
       "/assets/events/cloud-dev-0.jpg",
@@ -200,4 +205,4 @@ export const eventsData: Event[] = [
     ],
     
   },
-]
+];
